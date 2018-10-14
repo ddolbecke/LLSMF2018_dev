@@ -1,0 +1,45 @@
+build/default/production/drivers/interrupts.o:  \
+drivers/interrupts.c  \
+ plib/pic32mx/include/plib.h  \
+plib/pic32mx/include/peripheral/adc10.h  \
+ plib/pic32mx/include/peripheral/int.h  \
+ plib/pic32mx/include/peripheral/int_3xx_4xx.h  \
+ plib/pic32mx/include/peripheral/legacy/int_3xx_4xx_legacy.h  \
+ plib/pic32mx/include/peripheral/legacy/int_legacy.h  \
+ plib/pic32mx/include/peripheral/bmx.h  \
+ plib/pic32mx/include/peripheral/cmp.h  \
+ plib/pic32mx/include/peripheral/cvref.h  \
+ plib/pic32mx/include/peripheral/dma.h  \
+ plib/pic32mx/include/peripheral/dma_3xx_4xx.h  \
+ plib/pic32mx/include/peripheral/legacy/dma_legacy.h  \
+ plib/pic32mx/include/peripheral/i2c.h  \
+ plib/pic32mx/include/peripheral/legacy/i2c_legacy.h  \
+ plib/pic32mx/include/peripheral/incap.h  \
+ plib/pic32mx/include/peripheral/nvm.h  \
+ plib/pic32mx/include/peripheral/outcompare.h  \
+ plib/pic32mx/include/peripheral/pcache.h  \
+ plib/pic32mx/include/peripheral/pmp.h  \
+ plib/pic32mx/include/peripheral/ports.h  \
+ plib/pic32mx/include/peripheral/SPI_Port_Mappings.h  \
+ plib/pic32mx/include/peripheral/Ethernet_Port_Mappings.h  \
+ plib/pic32mx/include/peripheral/pps.h  \
+ plib/pic32mx/include/peripheral/power.h  \
+ plib/pic32mx/include/peripheral/reset.h  \
+ plib/pic32mx/include/peripheral/lock.h  \
+ plib/pic32mx/include/peripheral/rtcc.h  \
+ plib/pic32mx/include/peripheral/legacy/rtcc_legacy.h  \
+ plib/pic32mx/include/peripheral/spi.h  \
+ plib/pic32mx/include/peripheral/spi_3xx_4xx.h  \
+ plib/pic32mx/include/peripheral/legacy/spi_legacy.h  \
+ plib/pic32mx/include/peripheral/system.h  \
+ plib/pic32mx/include/peripheral/osc.h  \
+ plib/pic32mx/include/peripheral/timer.h  \
+ plib/pic32mx/include/peripheral/uart.h  \
+ plib/pic32mx/include/peripheral/legacy/uart_legacy.h  \
+ plib/pic32mx/include/peripheral/wdt.h  \
+ plib/pic32mx/include/peripheral/eth.h  \
+ plib/pic32mx/include/peripheral/CAN.h  \
+drivers/servo.h  \
+drivers/scope.h  \
+ drivers/delay.h  \
+drivers/motors.h 

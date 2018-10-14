@@ -1,0 +1,11 @@
+_init: CODE, 32420 0 20
+_main: CODE, 32408 0 12
+_ex14: CODE, 32648 0 120
+___lmul: CODE, 32562 0 86
+__initialization: CODE, 32464 0 32
+_getADC: CODE, 32398 0 10
+_initADC: CODE, 32440 0 24
+_loseSomeTime: CODE, 32502 0 60
+_getVoltage: CODE, 32376 0 6
+_setLeds: CODE, 32382 0 8
+Total: 378

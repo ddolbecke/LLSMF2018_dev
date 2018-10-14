@@ -1,0 +1,13 @@
+
+1) Process industriel : bande transporteuse, tri de pièce, usinage, .... 
+
+
+2) Sécurité ("casa de papel"): 
+- coffre à combinaison, 
+- hackage du coffre (il y a un petit trou par digit qui permet de vérifier si ce dernier est correct) 
+- impression de billet
+- détection de mouvement et alarme
+- voiture de police
+- télécommunication infra-rouge (émission et réception), lecteur de code sur un feuille (comme un badge), écriture de code sur une feuille (faux badge),
+
+ 

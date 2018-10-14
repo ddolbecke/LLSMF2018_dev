@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="65">
+  <projectmakefile>Makefile</projectmakefile>
+  <defaultConf>0</defaultConf>
+  <confs>
+    <conf name="default" type="2">
+<<<<<<< HEAD:code/mrk-board/intro_examples/nbproject/private/configurations.xml
+      <platformToolSN>:=MPLABComm-USB-Microchip:=&lt;vid>04D8:=&lt;pid>8108:=&lt;rev>0002:=&lt;man>Digilent:=&lt;prod>CerebotMX4ck:=&lt;sn>D698006:=&lt;drv>x:=&lt;xpt>h:=end</platformToolSN>
+      <languageToolchainDir>/opt/microchip/xc32/v2.10/bin</languageToolchainDir>
+=======
+<<<<<<< HEAD
+      <platformToolSN>:=MPLABComm-USB-Microchip:=&lt;vid>04D8:=&lt;pid>8108:=&lt;rev>0002:=&lt;man>Digilent:=&lt;prod>CerebotMX4ck:=&lt;sn>D698061:=&lt;drv>x:=&lt;xpt>h:=end</platformToolSN>
+      <languageToolchainDir>/Applications/microchip/xc32/v1.42/bin</languageToolchainDir>
+=======
+      <platformToolSN>:=MPLABComm-USB-Microchip:=&lt;vid>04D8:=&lt;pid>8108:=&lt;rev>0002:=&lt;man>Digilent:=&lt;prod>CerebotMX4CK:=&lt;sn>D698390:=&lt;drv>x:=&lt;xpt>h:=end</platformToolSN>
+      <languageToolchainDir>C:\Program Files (x86)\Microchip\xc32\v1.44\bin</languageToolchainDir>
+>>>>>>> 5ed15714008fe05d2ebe5747b176c220a419883b
+>>>>>>> d7d259f9d12638a222302d0a65033b6dece0573b:code/mrk-board/control/nbproject/private/configurations.xml
+      <mdbdebugger version="1">
+        <placeholder1>place holder 1</placeholder1>
+        <placeholder2>place holder 2</placeholder2>
+      </mdbdebugger>
+      <runprofile version="6">
+        <args></args>
+        <rundir></rundir>
+        <buildfirst>true</buildfirst>
+        <console-type>0</console-type>
+        <terminal-type>0</terminal-type>
+        <remove-instrumentation>0</remove-instrumentation>
+        <environment>
+        </environment>
+      </runprofile>
+    </conf>
+  </confs>
+</configurationDescriptor>

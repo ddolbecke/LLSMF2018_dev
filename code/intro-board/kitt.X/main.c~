@@ -1,0 +1,227 @@
+#include "drivers.h"
+
+void ex01(void);
+void ex02(void);
+void ex03(void);
+void ex04(void);
+void ex05(void);
+void ex06(void);
+void ex07(void);
+void ex08(void);
+void ex09(void);
+void ex10(void);
+void ex11(void);
+void ex12(void);
+void ex13(void);
+void ex14(void);
+void loseSomeTime(long);
+
+void main (void)
+{
+    //ex01();
+    //ex02();
+    //ex03();
+    //ex04();
+    //ex05();
+    //ex06();
+    //ex07();
+    //ex08();
+    //ex09();
+    //ex10();
+    //ex11();
+    //ex12();
+    //ex13();
+    ex14();
+}
+
+
+void ex01(void)
+{
+    init();
+    setLeds(0xaa);
+}
+
+void ex02(void)
+{
+    char leds = 0x55;
+    init();
+    setLeds(leds);
+}
+
+void ex03(void)
+{
+    char leds = 1;
+    char i = 1;
+
+    init();
+
+
+    while(i<4){
+            i = i + 1;
+            leds = leds*i;
+    }
+    setLeds(leds);
+}
+
+void ex04(void)
+{
+    char leds = 1;
+    char i;
+
+    init();
+
+    for(i=1;i<=4;i=i+1){
+            leds = leds*i;
+    }
+    setLeds(leds);
+}
+
+void ex05(void){
+    char leds = 0xaa;
+
+    init();
+
+    while(1){
+            leds = leds^0xff;
+            setLeds(leds);
+    }
+}
+
+void ex06(void){
+    char leds = 0;
+    int cpt;
+
+    init();
+
+    leds = 0;
+    while(1){
+            leds = leds^0xf0;
+            setLeds(leds);
+            for(cpt = 0; cpt<10000; cpt++)
+            {
+            }
+    }
+}
+
+void ex07(void){
+    char leds = 0;
+    int cpt;
+
+    init();
+
+    leds = 0;
+    while(1){
+        leds = leds^0xF0;
+        setLeds(leds);
+        loseSomeTime(1000);
+    }
+}
+
+void ex08(void){
+    unsigned char voltage;
+
+    init();
+
+    while(1){
+        voltage = getVoltage();
+        setLeds(voltage);
+    }	
+}
+
+void ex09(void){
+    char leds = 0;
+    int voltage;
+
+    init();
+
+    while(1){
+            voltage  = getVoltage();
+            loseSomeTime( (long) voltage*16);
+            leds ^= 0xff;
+            setLeds(leds);
+    }
+}
+
+void ex10(void){
+    char leds = 0; // variable sur 8 bits
+    int voltage;
+
+    init();
+
+    leds = 0;
+    while(1){
+        loseSomeTime((long)getVoltage()*16);
+        leds ^= 0xff;
+        setLeds(leds);
+    }
+}
+
+void ex11(void){
+    unsigned char voltage;
+    init();
+    while(1)
+    {
+        voltage = getVoltage;
+        while(!getButton()){
+            setLeds(0xff);
+        }
+        setLeds(0);
+    }
+}
+
+void ex12(void){
+    init();
+    while(1)
+    {
+        if(!getButton()){
+            setLeds(0xff);
+            loseSomeTime( 40 );
+            setLeds(0x00);
+            loseSomeTime( 10 );
+        }
+        else{
+            setLeds(0xff);
+            loseSomeTime( 10 );
+            setLeds(0x00);
+            loseSomeTime( 40 );
+        }
+
+    }
+}
+
+void ex13(void){
+    const char table[8] = {0b10000000, 0b11000000, 0b11100000, 0b11110000, 0b11111000,
+                        0b11111100, 0b11111110, 0b11111111};
+
+    char i;
+    init();
+    setLeds(0);
+    while(1){
+        for (i=0; i<8; i++){
+            loseSomeTime(1000);
+            setLeds(table[i]);
+        }
+        for (i=7; i>=0; i--){
+            loseSomeTime(1000);
+            setLeds(table[i]);
+        }
+    } 
+}
+
+void ex14(void){
+    char leds;
+    init();
+    while(1){
+        leds = 'G';
+        setLeds(leds);
+    }
+
+}
+
+
+
+void loseSomeTime(long cptMax)
+{
+	int cpt;
+	for(cpt = 0; cpt<cptMax; cpt++){  }
+}

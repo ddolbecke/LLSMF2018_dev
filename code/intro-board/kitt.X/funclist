@@ -1,0 +1,20 @@
+_highSpeedInterrupt: CODE, 344 0 84
+_init: CODE, 724 0 20
+_interruptEnable: CODE, 780 0 8
+_clearButtonInterruptRequest: CODE, 800 0 4
+_main: CODE, 530 0 48
+_setLedx: CODE, 616 0 36
+_buttonInterrupt: CODE, 8 0 336
+__initialization: CODE, 482 0 42
+_clearTimerInterruptRequest: CODE, 796 0 4
+_initTimer: CODE, 652 0 28
+_timerInterrupt: CODE, 24 0 206
+_resetLedx: CODE, 578 0 38
+i1_loadTimer: CODE, 744 0 20
+_lowSpeedInterrupt: CODE, 428 0 54
+_buttonInterruptEnable: CODE, 788 0 8
+_setLeds: CODE, 772 0 8
+_timerInterruptEnable: CODE, 764 0 8
+_ADC_Init: CODE, 680 0 24
+_loadTimer: CODE, 704 0 20
+Total: 996

@@ -1,0 +1,77 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage[french]{babel}
+
+%====================================
+%===load master thesis config file===
+%====================================
+
+
+\beamertemplatenavigationsymbolsempty
+%\setbeamerfont{page number in head/foot}{size=\large}
+\setbeamertemplate{footline}[frame number]
+
+\usetheme{Darmstadt}
+%\usetheme{Goettingen}
+\useinnertheme{circles}
+
+\mode<presentation>
+
+\useoutertheme[footline=authortitle]{miniframes}
+%\useinnertheme{circles}
+%\usecolortheme{whale}
+\usecolortheme{beaver}
+
+\usepackage{listings}
+
+%\usepackage{beamerthemeAmsterdam}
+%\setbeamertemplate{navigation symbols}{}
+
+%=============
+%=== title ===
+%=============
+\title{Matériel}
+\subtitle{}
+\author{Dimitri de Smet}
+\institute{UCL}
+\date{\today}
+
+%==============
+%===document===
+%==============
+
+%==============
+%===document===
+%==============
+
+\begin{document}
+
+%==================
+%=== title page ===
+%==================
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Outline}
+%\tableofcontents
+%\end{frame}
+
+
+%=================
+%=== main part ===
+%=================
+
+\input{presentation.tex}
+
+%====================
+%=== bibliography ===
+%====================
+
+\end{document}

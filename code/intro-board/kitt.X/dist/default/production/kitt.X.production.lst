@@ -1,0 +1,2054 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.33 build 59893 
+                                                                                               Mon Oct 13 22:01:30 2014
+
+Microchip Technology Omniscient Code Generator (Lite mode) build 59893
+     1                           	processor	18F45K20
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	idataCOMRAM,global,class=CODE,delta=1
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	bssCOMRAM,global,class=COMRAM,space=1,delta=1
+     8                           	psect	dataCOMRAM,global,class=COMRAM,space=1,delta=1
+     9                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+    10                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    16                           	psect	text6,global,reloc=2,class=CODE,delta=1
+    17                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    18                           	psect	text8,global,reloc=2,class=CODE,delta=1
+    19                           	psect	intcodelo,global,reloc=2,class=CODE,delta=1
+    20                           	psect	text10,global,reloc=2,class=CODE,delta=1
+    21                           	psect	text11,global,reloc=2,class=CODE,delta=1
+    22                           	psect	text12,global,reloc=2,class=CODE,delta=1
+    23                           	psect	text13,global,reloc=2,class=CODE,delta=1
+    24                           	psect	text14,global,reloc=2,class=CODE,delta=1
+    25                           	psect	text15,global,reloc=2,class=CODE,delta=1
+    26                           	psect	intcode,global,reloc=2,class=CODE,delta=1
+    27                           	psect	intcode_body,global,reloc=2,class=CODE,delta=1
+    28                           	psect	text17,global,reloc=2,class=CODE,delta=1
+    29                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    30                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    31  0000                     
+    32                           	psect	idataCOMRAM
+    33  000324                     __pidataCOMRAM:
+    34                           	opt stack 0
+    35                           
+    36                           ;initializer for _direction
+    37  000324  01                 	db	1
+    38                           
+    39                           ;initializer for _first
+    40  000325  02                 	db	2
+    41                           
+    42                           ;initializer for _second
+    43  000326  01                 	db	1
+    44  0000                     _ADCON0	set	4034
+    45  0000                     _ADCON0bits	set	4034
+    46  0000                     _ADCON1	set	4033
+    47  0000                     _ADCON2	set	4032
+    48  0000                     _ADRESH	set	4036
+    49  0000                     _ANSEL	set	3966
+    50  0000                     _ANSELH	set	3967
+    51  0000                     _ANSELbits	set	3966
+    52  0000                     _INTCON2bits	set	4081
+    53  0000                     _INTCONbits	set	4082
+    54  0000                     _LATD	set	3980
+    55  0000                     _PORTBbits	set	3969
+    56  0000                     _RCONbits	set	4048
+    57  0000                     _T0CON	set	4053
+    58  0000                     _TMR0H	set	4055
+    59  0000                     _TMR0L	set	4054
+    60  0000                     _TRISBbits	set	3987
+    61  0000                     _TRISD	set	3989
+    62  0000                     _WPUBbits	set	3964
+    63                           
+    64                           ; #config settings
+    65  0000                     
+    66                           	psect	cinit
+    67  0001E2                     __pcinit:
+    68                           	opt stack 0
+    69  0001E2                     start_initialization:
+    70                           	opt stack 0
+    71  0001E2                     __initialization:
+    72                           	opt stack 0
+    73                           
+    74                           ; Clear objects allocated to COMRAM (7 bytes)
+    75  0001E2  EE00  F02B         	lfsr	0,__pbssCOMRAM
+    76  0001E6  0E07               	movlw	7
+    77  0001E8                     clear_0:
+    78  0001E8  6AEE               	clrf	postinc0,c
+    79  0001EA  06E8               	decf	wreg,f,c
+    80  0001EC  E1FD               	bnz	clear_0
+    81                           
+    82                           ; Initialize objects allocated to COMRAM (3 bytes)
+    83                           ; load TBLPTR registers with __pidataCOMRAM
+    84  0001EE  0E24               	movlw	low __pidataCOMRAM
+    85  0001F0  6EF6               	movwf	tblptrl,c
+    86  0001F2  0E03               	movlw	high __pidataCOMRAM
+    87  0001F4  6EF7               	movwf	tblptrh,c
+    88  0001F6  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+    89  0001F8  6EF8               	movwf	tblptru,c
+    90  0001FA  0009               	tblrd		*+	;fetch initializer
+    91  0001FC  CFF5 F032          	movff	tablat,__pdataCOMRAM
+    92  000200  0009               	tblrd		*+	;fetch initializer
+    93  000202  CFF5 F033          	movff	tablat,__pdataCOMRAM+1
+    94  000206  0009               	tblrd		*+	;fetch initializer
+    95  000208  CFF5 F034          	movff	tablat,__pdataCOMRAM+2
+    96  00020C                     end_of_initialization:
+    97                           	opt stack 0
+    98  00020C                     __end_of__initialization:
+    99                           	opt stack 0
+   100  00020C  0100               	movlb	0
+   101  00020E  EF09  F001         	goto	_main	;jump to C main() function
+   102                           tblptru	equ	0xFF8
+   103                           tblptrh	equ	0xFF7
+   104                           tblptrl	equ	0xFF6
+   105                           tablat	equ	0xFF5
+   106                           postinc0	equ	0xFEE
+   107                           wreg	equ	0xFE8
+   108                           
+   109                           	psect	bssCOMRAM
+   110  00002B                     __pbssCOMRAM:
+   111                           	opt stack 0
+   112  00002B                     _interruptCount:
+   113                           	opt stack 0
+   114  00002B                     	ds	4
+   115  00002F                     _leds:
+   116                           	opt stack 0
+   117  00002F                     	ds	1
+   118  000030                     _lowSpeedInterruptCount:
+   119                           	opt stack 0
+   120  000030                     	ds	1
+   121  000031                     _third:
+   122                           	opt stack 0
+   123  000031                     	ds	1
+   124                           tblptru	equ	0xFF8
+   125                           tblptrh	equ	0xFF7
+   126                           tblptrl	equ	0xFF6
+   127                           tablat	equ	0xFF5
+   128                           postinc0	equ	0xFEE
+   129                           wreg	equ	0xFE8
+   130                           
+   131                           	psect	dataCOMRAM
+   132  000032                     __pdataCOMRAM:
+   133                           	opt stack 0
+   134  000032                     _direction:
+   135                           	opt stack 0
+   136  000032                     	ds	1
+   137  000033                     _first:
+   138                           	opt stack 0
+   139  000033                     	ds	1
+   140  000034                     _second:
+   141                           	opt stack 0
+   142  000034                     	ds	1
+   143                           tblptru	equ	0xFF8
+   144                           tblptrh	equ	0xFF7
+   145                           tblptrl	equ	0xFF6
+   146                           tablat	equ	0xFF5
+   147                           postinc0	equ	0xFEE
+   148                           wreg	equ	0xFE8
+   149                           
+   150                           	psect	cstackCOMRAM
+   151  000001                     __pcstackCOMRAM:
+   152                           	opt stack 0
+   153  000001                     ??_setLedx:
+   154  000001                     ??_resetLedx:
+   155  000001                     i1loadTimer@data:
+   156                           	opt stack 0
+   157                           
+   158                           ; 2 bytes @ 0x0
+   159  000001                     	ds	2
+   160  000003                     ??i1_loadTimer:
+   161  000003                     setLedx@x:
+   162                           	opt stack 0
+   163  000003                     resetLedx@x:
+   164                           	opt stack 0
+   165                           
+   166                           ; 1 bytes @ 0x2
+   167  000003                     	ds	1
+   168  000004                     setLedx@mask:
+   169                           	opt stack 0
+   170  000004                     resetLedx@mask:
+   171                           	opt stack 0
+   172                           
+   173                           ; 1 bytes @ 0x3
+   174  000004                     	ds	2
+   175  000006                     ??_timerInterrupt:
+   176                           
+   177                           ; 0 bytes @ 0x5
+   178  000006                     	ds	17
+   179  000017                     ??_buttonInterrupt:
+   180                           
+   181                           ; 0 bytes @ 0x16
+   182  000017                     	ds	14
+   183  000025                     initTimer@priority:
+   184                           	opt stack 0
+   185  000025                     setLeds@x:
+   186                           	opt stack 0
+   187  000025                     loadTimer@data:
+   188                           	opt stack 0
+   189                           
+   190                           ; 2 bytes @ 0x24
+   191  000025                     	ds	1
+   192  000026                     initTimer@prescaler:
+   193                           	opt stack 0
+   194                           
+   195                           ; 1 bytes @ 0x25
+   196  000026                     	ds	1
+   197  000027                     ??_loadTimer:
+   198                           
+   199                           ; 0 bytes @ 0x26
+   200  000027                     	ds	3
+   201  00002A                     main@m:
+   202                           	opt stack 0
+   203                           
+   204                           ; 1 bytes @ 0x29
+   205  00002A                     	ds	1
+   206                           tblptru	equ	0xFF8
+   207                           tblptrh	equ	0xFF7
+   208                           tblptrl	equ	0xFF6
+   209                           tablat	equ	0xFF5
+   210                           postinc0	equ	0xFEE
+   211                           wreg	equ	0xFE8
+   212                           
+   213 ;;
+   214 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   215 ;;
+   216 ;; *************** function _main *****************
+   217 ;; Defined at:
+   218 ;;		line 16 in file "main.c"
+   219 ;; Parameters:    Size  Location     Type
+   220 ;;		None
+   221 ;; Auto vars:     Size  Location     Type
+   222 ;;  m               1   41[COMRAM] unsigned char 
+   223 ;; Return value:  Size  Location     Type
+   224 ;;		None               void
+   225 ;; Registers used:
+   226 ;;		wreg, status,2, status,0, cstack
+   227 ;; Tracked objects:
+   228 ;;		On entry : 0/0
+   229 ;;		On exit  : 0/0
+   230 ;;		Unchanged: 0/0
+   231 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   232 ;;      Params:         0       0       0       0       0       0       0
+   233 ;;      Locals:         1       0       0       0       0       0       0
+   234 ;;      Temps:          0       0       0       0       0       0       0
+   235 ;;      Totals:         1       0       0       0       0       0       0
+   236 ;;Total ram usage:        1 bytes
+   237 ;; Hardware stack levels required when called:    7
+   238 ;; This function calls:
+   239 ;;		_buttonInterruptEnable
+   240 ;;		_init
+   241 ;;		_initTimer
+   242 ;;		_interruptEnable
+   243 ;;		_loadTimer
+   244 ;;		_setLeds
+   245 ;;		_timerInterruptEnable
+   246 ;; This function is called by:
+   247 ;;		Startup code after reset
+   248 ;; This function uses a non-reentrant model
+   249 ;;
+   250                           
+   251                           	psect	text0
+   252  000212                     __ptext0:
+   253                           	opt stack 0
+   254  000212                     _main:
+   255                           	opt stack 24
+   256                           
+   257                           ;main.c: 18: unsigned char m = 0xF;
+   258                           
+   259                           ;incstack = 0
+   260  000212  0E0F               	movlw	15
+   261  000214  6E2A               	movwf	main@m,c
+   262                           
+   263                           ;main.c: 19: init();
+   264  000216  EC6A  F001         	call	_init	;wreg free
+   265                           
+   266                           ;main.c: 20: interruptEnable();
+   267  00021A  EC86  F001         	call	_interruptEnable	;wreg free
+   268                           
+   269                           ;main.c: 21: buttonInterruptEnable();
+   270  00021E  EC8A  F001         	call	_buttonInterruptEnable	;wreg free
+   271                           
+   272                           ;main.c: 22: initTimer(0b010,0);
+   273  000222  0E00               	movlw	0
+   274  000224  6E25               	movwf	initTimer@priority,c
+   275  000226  0E02               	movlw	2
+   276  000228  EC46  F001         	call	_initTimer
+   277                           
+   278                           ;main.c: 23: timerInterruptEnable();
+   279  00022C  EC7E  F001         	call	_timerInterruptEnable	;wreg free
+   280                           
+   281                           ;main.c: 25: loadTimer(65535);
+   282  000230  0EFF               	movlw	255
+   283  000232  6E26               	movwf	loadTimer@data+1,c
+   284  000234  6825               	setf	loadTimer@data,c
+   285  000236  EC60  F001         	call	_loadTimer	;wreg free
+   286  00023A                     l865:
+   287                           
+   288                           ;main.c: 28: setLeds(leds);
+   289  00023A  502F               	movf	_leds,w,c
+   290  00023C  EC82  F001         	call	_setLeds
+   291  000240  D7FC               	goto	l865
+   292  000242                     __end_of_main:
+   293                           	opt stack 0
+   294                           tblptru	equ	0xFF8
+   295                           tblptrh	equ	0xFF7
+   296                           tblptrl	equ	0xFF6
+   297                           tablat	equ	0xFF5
+   298                           postinc0	equ	0xFEE
+   299                           wreg	equ	0xFE8
+   300                           
+   301 ;; *************** function _timerInterruptEnable *****************
+   302 ;; Defined at:
+   303 ;;		line 38 in file "drivers.c"
+   304 ;; Parameters:    Size  Location     Type
+   305 ;;		None
+   306 ;; Auto vars:     Size  Location     Type
+   307 ;;		None
+   308 ;; Return value:  Size  Location     Type
+   309 ;;		None               void
+   310 ;; Registers used:
+   311 ;;		None
+   312 ;; Tracked objects:
+   313 ;;		On entry : 0/0
+   314 ;;		On exit  : 0/0
+   315 ;;		Unchanged: 0/0
+   316 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   317 ;;      Params:         0       0       0       0       0       0       0
+   318 ;;      Locals:         0       0       0       0       0       0       0
+   319 ;;      Temps:          0       0       0       0       0       0       0
+   320 ;;      Totals:         0       0       0       0       0       0       0
+   321 ;;Total ram usage:        0 bytes
+   322 ;; Hardware stack levels used:    1
+   323 ;; Hardware stack levels required when called:    5
+   324 ;; This function calls:
+   325 ;;		Nothing
+   326 ;; This function is called by:
+   327 ;;		_main
+   328 ;; This function uses a non-reentrant model
+   329 ;;
+   330                           
+   331                           	psect	text1
+   332  0002FC                     __ptext1:
+   333                           	opt stack 0
+   334  0002FC                     _timerInterruptEnable:
+   335                           	opt stack 25
+   336                           
+   337                           ;drivers.c: 40: INTCONbits.PEIE = 1;
+   338                           
+   339                           ;incstack = 0
+   340  0002FC  8CF2               	bsf	intcon,6,c	;volatile
+   341                           
+   342                           ;drivers.c: 41: INTCONbits.T0IF = 0;
+   343  0002FE  94F2               	bcf	intcon,2,c	;volatile
+   344                           
+   345                           ;drivers.c: 42: INTCONbits.T0IE = 1;
+   346  000300  8AF2               	bsf	intcon,5,c	;volatile
+   347  000302  0012               	return	
+   348  000304                     __end_of_timerInterruptEnable:
+   349                           	opt stack 0
+   350                           tblptru	equ	0xFF8
+   351                           tblptrh	equ	0xFF7
+   352                           tblptrl	equ	0xFF6
+   353                           tablat	equ	0xFF5
+   354                           intcon	equ	0xFF2
+   355                           postinc0	equ	0xFEE
+   356                           wreg	equ	0xFE8
+   357                           
+   358 ;; *************** function _setLeds *****************
+   359 ;; Defined at:
+   360 ;;		line 57 in file "drivers.c"
+   361 ;; Parameters:    Size  Location     Type
+   362 ;;  x               1    wreg     unsigned char 
+   363 ;; Auto vars:     Size  Location     Type
+   364 ;;  x               1   36[COMRAM] unsigned char 
+   365 ;; Return value:  Size  Location     Type
+   366 ;;		None               void
+   367 ;; Registers used:
+   368 ;;		wreg
+   369 ;; Tracked objects:
+   370 ;;		On entry : 0/0
+   371 ;;		On exit  : 0/0
+   372 ;;		Unchanged: 0/0
+   373 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   374 ;;      Params:         0       0       0       0       0       0       0
+   375 ;;      Locals:         1       0       0       0       0       0       0
+   376 ;;      Temps:          0       0       0       0       0       0       0
+   377 ;;      Totals:         1       0       0       0       0       0       0
+   378 ;;Total ram usage:        1 bytes
+   379 ;; Hardware stack levels used:    1
+   380 ;; Hardware stack levels required when called:    5
+   381 ;; This function calls:
+   382 ;;		Nothing
+   383 ;; This function is called by:
+   384 ;;		_main
+   385 ;; This function uses a non-reentrant model
+   386 ;;
+   387                           
+   388                           	psect	text2
+   389  000304                     __ptext2:
+   390                           	opt stack 0
+   391  000304                     _setLeds:
+   392                           	opt stack 25
+   393                           
+   394                           ;incstack = 0
+   395                           ;setLeds@x stored from wreg
+   396  000304  6E25               	movwf	setLeds@x,c
+   397                           
+   398                           ;drivers.c: 58: LATD = x;
+   399  000306  C025  FF8C         	movff	setLeds@x,3980	;volatile
+   400  00030A  0012               	return	
+   401  00030C                     __end_of_setLeds:
+   402                           	opt stack 0
+   403                           tblptru	equ	0xFF8
+   404                           tblptrh	equ	0xFF7
+   405                           tblptrl	equ	0xFF6
+   406                           tablat	equ	0xFF5
+   407                           intcon	equ	0xFF2
+   408                           postinc0	equ	0xFEE
+   409                           wreg	equ	0xFE8
+   410                           
+   411 ;; *************** function _loadTimer *****************
+   412 ;; Defined at:
+   413 ;;		line 61 in file "drivers.c"
+   414 ;; Parameters:    Size  Location     Type
+   415 ;;  data            2   36[COMRAM] unsigned short 
+   416 ;; Auto vars:     Size  Location     Type
+   417 ;;		None
+   418 ;; Return value:  Size  Location     Type
+   419 ;;		None               void
+   420 ;; Registers used:
+   421 ;;		wreg, status,2
+   422 ;; Tracked objects:
+   423 ;;		On entry : 0/0
+   424 ;;		On exit  : 0/0
+   425 ;;		Unchanged: 0/0
+   426 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   427 ;;      Params:         2       0       0       0       0       0       0
+   428 ;;      Locals:         0       0       0       0       0       0       0
+   429 ;;      Temps:          3       0       0       0       0       0       0
+   430 ;;      Totals:         5       0       0       0       0       0       0
+   431 ;;Total ram usage:        5 bytes
+   432 ;; Hardware stack levels used:    1
+   433 ;; Hardware stack levels required when called:    5
+   434 ;; This function calls:
+   435 ;;		Nothing
+   436 ;; This function is called by:
+   437 ;;		_main
+   438 ;; This function uses a non-reentrant model
+   439 ;;
+   440                           
+   441                           	psect	text3
+   442  0002C0                     __ptext3:
+   443                           	opt stack 0
+   444  0002C0                     _loadTimer:
+   445                           	opt stack 25
+   446                           
+   447                           ;drivers.c: 62: TMR0H = data>>8;
+   448                           
+   449                           ;incstack = 0
+   450  0002C0  C026  F027         	movff	loadTimer@data+1,??_loadTimer
+   451  0002C4  C027  F028         	movff	??_loadTimer,??_loadTimer+1
+   452  0002C8  6A29               	clrf	(??_loadTimer+2)& (0+255),c
+   453  0002CA  5028               	movf	??_loadTimer+1,w,c
+   454  0002CC  6ED7               	movwf	4055,c	;volatile
+   455                           
+   456                           ;drivers.c: 63: TMR0L = data & 0x00FF;
+   457  0002CE  C025  FFD6         	movff	loadTimer@data,4054	;volatile
+   458  0002D2  0012               	return	
+   459  0002D4                     __end_of_loadTimer:
+   460                           	opt stack 0
+   461                           tblptru	equ	0xFF8
+   462                           tblptrh	equ	0xFF7
+   463                           tblptrl	equ	0xFF6
+   464                           tablat	equ	0xFF5
+   465                           intcon	equ	0xFF2
+   466                           postinc0	equ	0xFEE
+   467                           wreg	equ	0xFE8
+   468                           
+   469 ;; *************** function _interruptEnable *****************
+   470 ;; Defined at:
+   471 ;;		line 14 in file "drivers.c"
+   472 ;; Parameters:    Size  Location     Type
+   473 ;;		None
+   474 ;; Auto vars:     Size  Location     Type
+   475 ;;		None
+   476 ;; Return value:  Size  Location     Type
+   477 ;;		None               void
+   478 ;; Registers used:
+   479 ;;		None
+   480 ;; Tracked objects:
+   481 ;;		On entry : 0/0
+   482 ;;		On exit  : 0/0
+   483 ;;		Unchanged: 0/0
+   484 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   485 ;;      Params:         0       0       0       0       0       0       0
+   486 ;;      Locals:         0       0       0       0       0       0       0
+   487 ;;      Temps:          0       0       0       0       0       0       0
+   488 ;;      Totals:         0       0       0       0       0       0       0
+   489 ;;Total ram usage:        0 bytes
+   490 ;; Hardware stack levels used:    1
+   491 ;; Hardware stack levels required when called:    5
+   492 ;; This function calls:
+   493 ;;		Nothing
+   494 ;; This function is called by:
+   495 ;;		_main
+   496 ;; This function uses a non-reentrant model
+   497 ;;
+   498                           
+   499                           	psect	text4
+   500  00030C                     __ptext4:
+   501                           	opt stack 0
+   502  00030C                     _interruptEnable:
+   503                           	opt stack 25
+   504                           
+   505                           ;drivers.c: 16: RCONbits.IPEN = 1;
+   506                           
+   507                           ;incstack = 0
+   508  00030C  8ED0               	bsf	4048,7,c	;volatile
+   509                           
+   510                           ;drivers.c: 17: INTCONbits.GIEL = 1;
+   511  00030E  8CF2               	bsf	intcon,6,c	;volatile
+   512                           
+   513                           ;drivers.c: 18: INTCONbits.GIEH = 1;
+   514  000310  8EF2               	bsf	intcon,7,c	;volatile
+   515  000312  0012               	return	
+   516  000314                     __end_of_interruptEnable:
+   517                           	opt stack 0
+   518                           tblptru	equ	0xFF8
+   519                           tblptrh	equ	0xFF7
+   520                           tblptrl	equ	0xFF6
+   521                           tablat	equ	0xFF5
+   522                           intcon	equ	0xFF2
+   523                           postinc0	equ	0xFEE
+   524                           wreg	equ	0xFE8
+   525                           
+   526 ;; *************** function _initTimer *****************
+   527 ;; Defined at:
+   528 ;;		line 50 in file "drivers.c"
+   529 ;; Parameters:    Size  Location     Type
+   530 ;;  prescaler       1    wreg     unsigned char 
+   531 ;;  priority        1   36[COMRAM] unsigned char 
+   532 ;; Auto vars:     Size  Location     Type
+   533 ;;  prescaler       1   37[COMRAM] unsigned char 
+   534 ;; Return value:  Size  Location     Type
+   535 ;;		None               void
+   536 ;; Registers used:
+   537 ;;		wreg, status,2, status,0
+   538 ;; Tracked objects:
+   539 ;;		On entry : 0/0
+   540 ;;		On exit  : 0/0
+   541 ;;		Unchanged: 0/0
+   542 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   543 ;;      Params:         1       0       0       0       0       0       0
+   544 ;;      Locals:         1       0       0       0       0       0       0
+   545 ;;      Temps:          0       0       0       0       0       0       0
+   546 ;;      Totals:         2       0       0       0       0       0       0
+   547 ;;Total ram usage:        2 bytes
+   548 ;; Hardware stack levels used:    1
+   549 ;; Hardware stack levels required when called:    5
+   550 ;; This function calls:
+   551 ;;		Nothing
+   552 ;; This function is called by:
+   553 ;;		_main
+   554 ;; This function uses a non-reentrant model
+   555 ;;
+   556                           
+   557                           	psect	text5
+   558  00028C                     __ptext5:
+   559                           	opt stack 0
+   560  00028C                     _initTimer:
+   561                           	opt stack 25
+   562                           
+   563                           ;incstack = 0
+   564                           ;initTimer@prescaler stored from wreg
+   565  00028C  6E26               	movwf	initTimer@prescaler,c
+   566                           
+   567                           ;drivers.c: 51: T0CON = 0b10000000 | prescaler;
+   568  00028E  5026               	movf	initTimer@prescaler,w,c
+   569  000290  0980               	iorlw	128
+   570  000292  6ED5               	movwf	4053,c	;volatile
+   571                           
+   572                           ;drivers.c: 52: INTCON2bits.TMR0IP = priority;
+   573  000294  B025               	btfsc	initTimer@priority,0,c
+   574  000296  D002               	bra	u35
+   575  000298  94F1               	bcf	intcon2,2,c	;volatile
+   576  00029A  D001               	bra	u36
+   577  00029C                     u35:
+   578  00029C  84F1               	bsf	intcon2,2,c	;volatile
+   579  00029E                     u36:
+   580                           
+   581                           ;drivers.c: 53: if(priority)
+   582  00029E  5025               	movf	initTimer@priority,w,c
+   583  0002A0  B4D8               	btfsc	status,2,c
+   584  0002A2  0012               	return	
+   585                           
+   586                           ;drivers.c: 54: RCONbits.IPEN = 1;
+   587  0002A4  8ED0               	bsf	4048,7,c	;volatile
+   588  0002A6  0012               	return	
+   589  0002A8                     __end_of_initTimer:
+   590                           	opt stack 0
+   591                           tblptru	equ	0xFF8
+   592                           tblptrh	equ	0xFF7
+   593                           tblptrl	equ	0xFF6
+   594                           tablat	equ	0xFF5
+   595                           intcon	equ	0xFF2
+   596                           intcon2	equ	0xFF1
+   597                           postinc0	equ	0xFEE
+   598                           wreg	equ	0xFE8
+   599                           status	equ	0xFD8
+   600                           
+   601 ;; *************** function _init *****************
+   602 ;; Defined at:
+   603 ;;		line 4 in file "drivers.c"
+   604 ;; Parameters:    Size  Location     Type
+   605 ;;		None
+   606 ;; Auto vars:     Size  Location     Type
+   607 ;;		None
+   608 ;; Return value:  Size  Location     Type
+   609 ;;		None               void
+   610 ;; Registers used:
+   611 ;;		wreg, status,2, cstack
+   612 ;; Tracked objects:
+   613 ;;		On entry : 0/0
+   614 ;;		On exit  : 0/0
+   615 ;;		Unchanged: 0/0
+   616 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   617 ;;      Params:         0       0       0       0       0       0       0
+   618 ;;      Locals:         0       0       0       0       0       0       0
+   619 ;;      Temps:          0       0       0       0       0       0       0
+   620 ;;      Totals:         0       0       0       0       0       0       0
+   621 ;;Total ram usage:        0 bytes
+   622 ;; Hardware stack levels used:    1
+   623 ;; Hardware stack levels required when called:    6
+   624 ;; This function calls:
+   625 ;;		_ADC_Init
+   626 ;; This function is called by:
+   627 ;;		_main
+   628 ;; This function uses a non-reentrant model
+   629 ;;
+   630                           
+   631                           	psect	text6
+   632  0002D4                     __ptext6:
+   633                           	opt stack 0
+   634  0002D4                     _init:
+   635                           	opt stack 24
+   636                           
+   637                           ;drivers.c: 5: TRISD = 0;
+   638                           
+   639                           ;incstack = 0
+   640  0002D4  0E00               	movlw	0
+   641  0002D6  6E95               	movwf	3989,c	;volatile
+   642                           
+   643                           ;drivers.c: 6: INTCON2bits.RBPU = 0;
+   644  0002D8  9EF1               	bcf	intcon2,7,c	;volatile
+   645                           
+   646                           ;drivers.c: 7: WPUBbits.WPUB0 = 1;
+   647  0002DA  807C               	bsf	3964,0,c	;volatile
+   648                           
+   649                           ;drivers.c: 8: ANSELH = 0x00;
+   650  0002DC  0E00               	movlw	0
+   651  0002DE  6E7F               	movwf	3967,c	;volatile
+   652                           
+   653                           ;drivers.c: 9: TRISBbits.TRISB0 = 1;
+   654  0002E0  8093               	bsf	3987,0,c	;volatile
+   655                           
+   656                           ;drivers.c: 10: ADC_Init();
+   657  0002E2  EC54  F001         	call	_ADC_Init	;wreg free
+   658  0002E6  0012               	return	
+   659  0002E8                     __end_of_init:
+   660                           	opt stack 0
+   661                           tblptru	equ	0xFF8
+   662                           tblptrh	equ	0xFF7
+   663                           tblptrl	equ	0xFF6
+   664                           tablat	equ	0xFF5
+   665                           intcon	equ	0xFF2
+   666                           intcon2	equ	0xFF1
+   667                           postinc0	equ	0xFEE
+   668                           wreg	equ	0xFE8
+   669                           status	equ	0xFD8
+   670                           
+   671 ;; *************** function _ADC_Init *****************
+   672 ;; Defined at:
+   673 ;;		line 77 in file "drivers.c"
+   674 ;; Parameters:    Size  Location     Type
+   675 ;;		None
+   676 ;; Auto vars:     Size  Location     Type
+   677 ;;		None
+   678 ;; Return value:  Size  Location     Type
+   679 ;;		None               void
+   680 ;; Registers used:
+   681 ;;		wreg, status,2
+   682 ;; Tracked objects:
+   683 ;;		On entry : 0/0
+   684 ;;		On exit  : 0/0
+   685 ;;		Unchanged: 0/0
+   686 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   687 ;;      Params:         0       0       0       0       0       0       0
+   688 ;;      Locals:         0       0       0       0       0       0       0
+   689 ;;      Temps:          0       0       0       0       0       0       0
+   690 ;;      Totals:         0       0       0       0       0       0       0
+   691 ;;Total ram usage:        0 bytes
+   692 ;; Hardware stack levels used:    1
+   693 ;; Hardware stack levels required when called:    5
+   694 ;; This function calls:
+   695 ;;		Nothing
+   696 ;; This function is called by:
+   697 ;;		_init
+   698 ;; This function uses a non-reentrant model
+   699 ;;
+   700                           
+   701                           	psect	text7
+   702  0002A8                     __ptext7:
+   703                           	opt stack 0
+   704  0002A8                     _ADC_Init:
+   705                           	opt stack 24
+   706                           
+   707                           ;drivers.c: 82: ANSEL = 0;
+   708                           
+   709                           ;incstack = 0
+   710  0002A8  0E00               	movlw	0
+   711  0002AA  6E7E               	movwf	3966,c	;volatile
+   712                           
+   713                           ;drivers.c: 83: ANSELH = 0;
+   714  0002AC  0E00               	movlw	0
+   715  0002AE  6E7F               	movwf	3967,c	;volatile
+   716                           
+   717                           ;drivers.c: 84: ANSELbits.ANS0 = 1;
+   718  0002B0  807E               	bsf	3966,0,c	;volatile
+   719                           
+   720                           ;drivers.c: 88: ADCON1 = 0;
+   721  0002B2  0E00               	movlw	0
+   722  0002B4  6EC1               	movwf	4033,c	;volatile
+   723                           
+   724                           ;drivers.c: 106: ADCON2 = 0b00111000;
+   725  0002B6  0E38               	movlw	56
+   726  0002B8  6EC0               	movwf	4032,c	;volatile
+   727                           
+   728                           ;drivers.c: 109: ADCON0 = 0b00000001;
+   729  0002BA  0E01               	movlw	1
+   730  0002BC  6EC2               	movwf	4034,c	;volatile
+   731  0002BE  0012               	return	
+   732  0002C0                     __end_of_ADC_Init:
+   733                           	opt stack 0
+   734                           tblptru	equ	0xFF8
+   735                           tblptrh	equ	0xFF7
+   736                           tblptrl	equ	0xFF6
+   737                           tablat	equ	0xFF5
+   738                           intcon	equ	0xFF2
+   739                           intcon2	equ	0xFF1
+   740                           postinc0	equ	0xFEE
+   741                           wreg	equ	0xFE8
+   742                           status	equ	0xFD8
+   743                           
+   744 ;; *************** function _buttonInterruptEnable *****************
+   745 ;; Defined at:
+   746 ;;		line 25 in file "drivers.c"
+   747 ;; Parameters:    Size  Location     Type
+   748 ;;		None
+   749 ;; Auto vars:     Size  Location     Type
+   750 ;;		None
+   751 ;; Return value:  Size  Location     Type
+   752 ;;		None               void
+   753 ;; Registers used:
+   754 ;;		None
+   755 ;; Tracked objects:
+   756 ;;		On entry : 0/0
+   757 ;;		On exit  : 0/0
+   758 ;;		Unchanged: 0/0
+   759 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   760 ;;      Params:         0       0       0       0       0       0       0
+   761 ;;      Locals:         0       0       0       0       0       0       0
+   762 ;;      Temps:          0       0       0       0       0       0       0
+   763 ;;      Totals:         0       0       0       0       0       0       0
+   764 ;;Total ram usage:        0 bytes
+   765 ;; Hardware stack levels used:    1
+   766 ;; Hardware stack levels required when called:    5
+   767 ;; This function calls:
+   768 ;;		Nothing
+   769 ;; This function is called by:
+   770 ;;		_main
+   771 ;; This function uses a non-reentrant model
+   772 ;;
+   773                           
+   774                           	psect	text8
+   775  000314                     __ptext8:
+   776                           	opt stack 0
+   777  000314                     _buttonInterruptEnable:
+   778                           	opt stack 25
+   779                           
+   780                           ;drivers.c: 26: INTCON2bits.INTEDG0 = 0;
+   781                           
+   782                           ;incstack = 0
+   783  000314  9CF1               	bcf	intcon2,6,c	;volatile
+   784                           
+   785                           ;drivers.c: 27: INTCONbits.INT0IF = 0;
+   786  000316  92F2               	bcf	intcon,1,c	;volatile
+   787                           
+   788                           ;drivers.c: 28: INTCONbits.INT0IE = 1;
+   789  000318  88F2               	bsf	intcon,4,c	;volatile
+   790  00031A  0012               	return	
+   791  00031C                     __end_of_buttonInterruptEnable:
+   792                           	opt stack 0
+   793                           tblptru	equ	0xFF8
+   794                           tblptrh	equ	0xFF7
+   795                           tblptrl	equ	0xFF6
+   796                           tablat	equ	0xFF5
+   797                           intcon	equ	0xFF2
+   798                           intcon2	equ	0xFF1
+   799                           postinc0	equ	0xFEE
+   800                           wreg	equ	0xFE8
+   801                           status	equ	0xFD8
+   802                           
+   803 ;; *************** function _timerInterrupt *****************
+   804 ;; Defined at:
+   805 ;;		line 39 in file "main.c"
+   806 ;; Parameters:    Size  Location     Type
+   807 ;;		None
+   808 ;; Auto vars:     Size  Location     Type
+   809 ;;		None
+   810 ;; Return value:  Size  Location     Type
+   811 ;;		None               void
+   812 ;; Registers used:
+   813 ;;		wreg, status,2, status,0, cstack
+   814 ;; Tracked objects:
+   815 ;;		On entry : 0/0
+   816 ;;		On exit  : 0/0
+   817 ;;		Unchanged: 0/0
+   818 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   819 ;;      Params:         0       0       0       0       0       0       0
+   820 ;;      Locals:         0       0       0       0       0       0       0
+   821 ;;      Temps:         17       0       0       0       0       0       0
+   822 ;;      Totals:        17       0       0       0       0       0       0
+   823 ;;Total ram usage:       17 bytes
+   824 ;; Hardware stack levels used:    1
+   825 ;; Hardware stack levels required when called:    4
+   826 ;; This function calls:
+   827 ;;		_clearTimerInterruptRequest
+   828 ;;		_highSpeedInterrupt
+   829 ;;		_lowSpeedInterrupt
+   830 ;; This function is called by:
+   831 ;;		Interrupt level 1
+   832 ;; This function uses a non-reentrant model
+   833 ;;
+   834                           
+   835                           	psect	intcodelo
+   836  000018                     __pintcodelo:
+   837                           	opt stack 0
+   838  000018                     _timerInterrupt:
+   839                           	opt stack 24
+   840                           
+   841                           ;incstack = 0
+   842  000018  CFD8 F006          	movff	status,??_timerInterrupt
+   843  00001C  CFE8 F007          	movff	wreg,??_timerInterrupt+1
+   844  000020  CFE0 F008          	movff	bsr,??_timerInterrupt+2
+   845  000024  CFFA F009          	movff	pclath,??_timerInterrupt+3
+   846  000028  CFFB F00A          	movff	pclatu,??_timerInterrupt+4
+   847  00002C  CFE9 F00B          	movff	fsr0l,??_timerInterrupt+5
+   848  000030  CFEA F00C          	movff	fsr0h,??_timerInterrupt+6
+   849  000034  CFE1 F00D          	movff	fsr1l,??_timerInterrupt+7
+   850  000038  CFE2 F00E          	movff	fsr1h,??_timerInterrupt+8
+   851  00003C  CFD9 F00F          	movff	fsr2l,??_timerInterrupt+9
+   852  000040  CFDA F010          	movff	fsr2h,??_timerInterrupt+10
+   853  000044  CFF3 F011          	movff	prodl,??_timerInterrupt+11
+   854  000048  CFF4 F012          	movff	prodh,??_timerInterrupt+12
+   855  00004C  CFF6 F013          	movff	tblptrl,??_timerInterrupt+13
+   856  000050  CFF7 F014          	movff	tblptrh,??_timerInterrupt+14
+   857  000054  CFF8 F015          	movff	tblptru,??_timerInterrupt+15
+   858  000058  CFF5 F016          	movff	tablat,??_timerInterrupt+16
+   859                           
+   860                           ;main.c: 41: interruptCount++;
+   861  00005C  0E01               	movlw	1
+   862  00005E  262B               	addwf	_interruptCount,f,c
+   863  000060  0E00               	movlw	0
+   864  000062  222C               	addwfc	_interruptCount+1,f,c
+   865  000064  222D               	addwfc	_interruptCount+2,f,c
+   866  000066  222E               	addwfc	_interruptCount+3,f,c
+   867                           
+   868                           ;main.c: 42: if(interruptCount>10){
+   869  000068  502E               	movf	_interruptCount+3,w,c
+   870  00006A  0A80               	xorlw	128
+   871  00006C  0F80               	addlw	128
+   872  00006E  E108               	bnz	i1u12_25
+   873  000070  0E00               	movlw	0
+   874  000072  5C2D               	subwf	_interruptCount+2,w,c
+   875  000074  E105               	bnz	i1u12_25
+   876  000076  0E00               	movlw	0
+   877  000078  5C2C               	subwf	_interruptCount+1,w,c
+   878  00007A  E102               	bnz	i1u12_25
+   879  00007C  0E0B               	movlw	11
+   880  00007E  5C2B               	subwf	_interruptCount,w,c
+   881  000080                     i1u12_25:
+   882  000080  A0D8               	btfss	status,0,c
+   883  000082  D00A               	goto	i1l877
+   884                           
+   885                           ;main.c: 43: interruptCount=1;
+   886  000084  0E01               	movlw	1
+   887  000086  6E2B               	movwf	_interruptCount,c
+   888  000088  0E00               	movlw	0
+   889  00008A  6E2C               	movwf	_interruptCount+1,c
+   890  00008C  0E00               	movlw	0
+   891  00008E  6E2D               	movwf	_interruptCount+2,c
+   892  000090  0E00               	movlw	0
+   893  000092  6E2E               	movwf	_interruptCount+3,c
+   894                           
+   895                           ;main.c: 44: lowSpeedInterrupt();
+   896  000094  ECD6  F000         	call	_lowSpeedInterrupt	;wreg free
+   897  000098                     i1l877:
+   898                           
+   899                           ;main.c: 45: }
+   900                           ;main.c: 46: highSpeedInterrupt();
+   901  000098  ECAC  F000         	call	_highSpeedInterrupt	;wreg free
+   902                           
+   903                           ;main.c: 47: clearTimerInterruptRequest();
+   904  00009C  EC8E  F001         	call	_clearTimerInterruptRequest	;wreg free
+   905  0000A0  C016  FFF5         	movff	??_timerInterrupt+16,tablat
+   906  0000A4  C015  FFF8         	movff	??_timerInterrupt+15,tblptru
+   907  0000A8  C014  FFF7         	movff	??_timerInterrupt+14,tblptrh
+   908  0000AC  C013  FFF6         	movff	??_timerInterrupt+13,tblptrl
+   909  0000B0  C012  FFF4         	movff	??_timerInterrupt+12,prodh
+   910  0000B4  C011  FFF3         	movff	??_timerInterrupt+11,prodl
+   911  0000B8  C010  FFDA         	movff	??_timerInterrupt+10,fsr2h
+   912  0000BC  C00F  FFD9         	movff	??_timerInterrupt+9,fsr2l
+   913  0000C0  C00E  FFE2         	movff	??_timerInterrupt+8,fsr1h
+   914  0000C4  C00D  FFE1         	movff	??_timerInterrupt+7,fsr1l
+   915  0000C8  C00C  FFEA         	movff	??_timerInterrupt+6,fsr0h
+   916  0000CC  C00B  FFE9         	movff	??_timerInterrupt+5,fsr0l
+   917  0000D0  C00A  FFFB         	movff	??_timerInterrupt+4,pclatu
+   918  0000D4  C009  FFFA         	movff	??_timerInterrupt+3,pclath
+   919  0000D8  C008  FFE0         	movff	??_timerInterrupt+2,bsr
+   920  0000DC  C007  FFE8         	movff	??_timerInterrupt+1,wreg
+   921  0000E0  C006  FFD8         	movff	??_timerInterrupt,status
+   922  0000E4  0010               	retfie	
+   923  0000E6                     __end_of_timerInterrupt:
+   924                           	opt stack 0
+   925                           pclatu	equ	0xFFB
+   926                           pclath	equ	0xFFA
+   927                           tblptru	equ	0xFF8
+   928                           tblptrh	equ	0xFF7
+   929                           tblptrl	equ	0xFF6
+   930                           tablat	equ	0xFF5
+   931                           prodh	equ	0xFF4
+   932                           prodl	equ	0xFF3
+   933                           intcon	equ	0xFF2
+   934                           intcon2	equ	0xFF1
+   935                           postinc0	equ	0xFEE
+   936                           fsr0h	equ	0xFEA
+   937                           fsr0l	equ	0xFE9
+   938                           wreg	equ	0xFE8
+   939                           fsr1h	equ	0xFE2
+   940                           fsr1l	equ	0xFE1
+   941                           bsr	equ	0xFE0
+   942                           fsr2h	equ	0xFDA
+   943                           fsr2l	equ	0xFD9
+   944                           status	equ	0xFD8
+   945                           
+   946 ;; *************** function _lowSpeedInterrupt *****************
+   947 ;; Defined at:
+   948 ;;		line 50 in file "main.c"
+   949 ;; Parameters:    Size  Location     Type
+   950 ;;		None
+   951 ;; Auto vars:     Size  Location     Type
+   952 ;;		None
+   953 ;; Return value:  Size  Location     Type
+   954 ;;		None               void
+   955 ;; Registers used:
+   956 ;;		wreg, status,2, status,0
+   957 ;; Tracked objects:
+   958 ;;		On entry : 0/0
+   959 ;;		On exit  : 0/0
+   960 ;;		Unchanged: 0/0
+   961 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   962 ;;      Params:         0       0       0       0       0       0       0
+   963 ;;      Locals:         0       0       0       0       0       0       0
+   964 ;;      Temps:          0       0       0       0       0       0       0
+   965 ;;      Totals:         0       0       0       0       0       0       0
+   966 ;;Total ram usage:        0 bytes
+   967 ;; Hardware stack levels used:    1
+   968 ;; Hardware stack levels required when called:    2
+   969 ;; This function calls:
+   970 ;;		Nothing
+   971 ;; This function is called by:
+   972 ;;		_timerInterrupt
+   973 ;; This function uses a non-reentrant model
+   974 ;;
+   975                           
+   976                           	psect	text10
+   977  0001AC                     __ptext10:
+   978                           	opt stack 0
+   979  0001AC                     _lowSpeedInterrupt:
+   980                           	opt stack 25
+   981                           
+   982                           ;main.c: 51: lowSpeedInterruptCount++;
+   983                           
+   984                           ;incstack = 0
+   985  0001AC  2A30               	incf	_lowSpeedInterruptCount,f,c
+   986                           
+   987                           ;main.c: 52: if (lowSpeedInterruptCount>4){
+   988  0001AE  0E04               	movlw	4
+   989  0001B0  6430               	cpfsgt	_lowSpeedInterruptCount,c
+   990  0001B2  0012               	return	
+   991                           
+   992                           ;main.c: 53: lowSpeedInterruptCount=0;
+   993  0001B4  0E00               	movlw	0
+   994  0001B6  6E30               	movwf	_lowSpeedInterruptCount,c
+   995                           
+   996                           ;main.c: 55: third = second;
+   997  0001B8  C034  F031         	movff	_second,_third
+   998                           
+   999                           ;main.c: 56: second = first;
+  1000  0001BC  C033  F034         	movff	_first,_second
+  1001                           
+  1002                           ;main.c: 58: if (direction){
+  1003  0001C0  5032               	movf	_direction,w,c
+  1004  0001C2  B4D8               	btfsc	status,2,c
+  1005  0001C4  D008               	goto	i1l833
+  1006                           
+  1007                           ;main.c: 59: first++;
+  1008  0001C6  2A33               	incf	_first,f,c
+  1009                           
+  1010                           ;main.c: 60: if (first==7)
+  1011  0001C8  5033               	movf	_first,w,c
+  1012  0001CA  0A07               	xorlw	7
+  1013  0001CC  A4D8               	btfss	status,2,c
+  1014  0001CE  0012               	return	
+  1015                           
+  1016                           ;main.c: 61: direction = 0;
+  1017  0001D0  0E00               	movlw	0
+  1018  0001D2  6E32               	movwf	_direction,c
+  1019  0001D4  0012               	return	
+  1020  0001D6                     i1l833:
+  1021                           
+  1022                           ;main.c: 63: else{
+  1023                           ;main.c: 64: first--;
+  1024  0001D6  0633               	decf	_first,f,c
+  1025                           
+  1026                           ;main.c: 65: if (first==0)
+  1027  0001D8  6633               	tstfsz	_first,c
+  1028  0001DA  0012               	return	
+  1029                           
+  1030                           ;main.c: 66: direction = 1;
+  1031  0001DC  0E01               	movlw	1
+  1032  0001DE  6E32               	movwf	_direction,c
+  1033  0001E0  0012               	return	
+  1034  0001E2                     __end_of_lowSpeedInterrupt:
+  1035                           	opt stack 0
+  1036                           pclatu	equ	0xFFB
+  1037                           pclath	equ	0xFFA
+  1038                           tblptru	equ	0xFF8
+  1039                           tblptrh	equ	0xFF7
+  1040                           tblptrl	equ	0xFF6
+  1041                           tablat	equ	0xFF5
+  1042                           prodh	equ	0xFF4
+  1043                           prodl	equ	0xFF3
+  1044                           intcon	equ	0xFF2
+  1045                           intcon2	equ	0xFF1
+  1046                           postinc0	equ	0xFEE
+  1047                           fsr0h	equ	0xFEA
+  1048                           fsr0l	equ	0xFE9
+  1049                           wreg	equ	0xFE8
+  1050                           fsr1h	equ	0xFE2
+  1051                           fsr1l	equ	0xFE1
+  1052                           bsr	equ	0xFE0
+  1053                           fsr2h	equ	0xFDA
+  1054                           fsr2l	equ	0xFD9
+  1055                           status	equ	0xFD8
+  1056                           
+  1057 ;; *************** function _highSpeedInterrupt *****************
+  1058 ;; Defined at:
+  1059 ;;		line 73 in file "main.c"
+  1060 ;; Parameters:    Size  Location     Type
+  1061 ;;		None
+  1062 ;; Auto vars:     Size  Location     Type
+  1063 ;;		None
+  1064 ;; Return value:  Size  Location     Type
+  1065 ;;		None               void
+  1066 ;; Registers used:
+  1067 ;;		wreg, status,2, status,0, cstack
+  1068 ;; Tracked objects:
+  1069 ;;		On entry : 0/0
+  1070 ;;		On exit  : 0/0
+  1071 ;;		Unchanged: 0/0
+  1072 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1073 ;;      Params:         0       0       0       0       0       0       0
+  1074 ;;      Locals:         0       0       0       0       0       0       0
+  1075 ;;      Temps:          0       0       0       0       0       0       0
+  1076 ;;      Totals:         0       0       0       0       0       0       0
+  1077 ;;Total ram usage:        0 bytes
+  1078 ;; Hardware stack levels used:    1
+  1079 ;; Hardware stack levels required when called:    3
+  1080 ;; This function calls:
+  1081 ;;		_resetLedx
+  1082 ;;		_setLedx
+  1083 ;;		i1_loadTimer
+  1084 ;; This function is called by:
+  1085 ;;		_timerInterrupt
+  1086 ;; This function uses a non-reentrant model
+  1087 ;;
+  1088                           
+  1089                           	psect	text11
+  1090  000158                     __ptext11:
+  1091                           	opt stack 0
+  1092  000158                     _highSpeedInterrupt:
+  1093                           	opt stack 24
+  1094                           
+  1095                           ;main.c: 74: loadTimer(65500);
+  1096                           
+  1097                           ;incstack = 0
+  1098  000158  0EFF               	movlw	255
+  1099  00015A  6E02               	movwf	i1loadTimer@data+1,c
+  1100  00015C  0EDC               	movlw	220
+  1101  00015E  6E01               	movwf	i1loadTimer@data,c
+  1102  000160  EC74  F001         	call	i1_loadTimer	;wreg free
+  1103                           
+  1104                           ;main.c: 75: if(interruptCount==1){
+  1105  000164  042B               	decf	_interruptCount,w,c
+  1106  000166  102C               	iorwf	_interruptCount+1,w,c
+  1107  000168  102D               	iorwf	_interruptCount+2,w,c
+  1108  00016A  102E               	iorwf	_interruptCount+3,w,c
+  1109  00016C  A4D8               	btfss	status,2,c
+  1110  00016E  D009               	goto	i1l845
+  1111                           
+  1112                           ;main.c: 77: setLedx(first);
+  1113  000170  5033               	movf	_first,w,c
+  1114  000172  EC34  F001         	call	_setLedx
+  1115                           
+  1116                           ;main.c: 78: setLedx(second);
+  1117  000176  5034               	movf	_second,w,c
+  1118  000178  EC34  F001         	call	_setLedx
+  1119                           
+  1120                           ;main.c: 79: setLedx(third);
+  1121  00017C  5031               	movf	_third,w,c
+  1122  00017E  EC34  F001         	call	_setLedx
+  1123  000182                     i1l845:
+  1124                           
+  1125                           ;main.c: 80: }
+  1126                           ;main.c: 81: if(interruptCount==2){
+  1127  000182  502B               	movf	_interruptCount,w,c
+  1128  000184  0A02               	xorlw	2
+  1129  000186  102C               	iorwf	_interruptCount+1,w,c
+  1130  000188  102D               	iorwf	_interruptCount+2,w,c
+  1131  00018A  102E               	iorwf	_interruptCount+3,w,c
+  1132  00018C  A4D8               	btfss	status,2,c
+  1133  00018E  D003               	goto	i1l849
+  1134                           
+  1135                           ;main.c: 82: resetLedx(third);
+  1136  000190  5031               	movf	_third,w,c
+  1137  000192  EC21  F001         	call	_resetLedx
+  1138  000196                     i1l849:
+  1139                           
+  1140                           ;main.c: 83: }
+  1141                           ;main.c: 84: if(interruptCount==4){
+  1142  000196  502B               	movf	_interruptCount,w,c
+  1143  000198  0A04               	xorlw	4
+  1144  00019A  102C               	iorwf	_interruptCount+1,w,c
+  1145  00019C  102D               	iorwf	_interruptCount+2,w,c
+  1146  00019E  102E               	iorwf	_interruptCount+3,w,c
+  1147  0001A0  A4D8               	btfss	status,2,c
+  1148  0001A2  0012               	return	
+  1149                           
+  1150                           ;main.c: 85: resetLedx(second);
+  1151  0001A4  5034               	movf	_second,w,c
+  1152  0001A6  EC21  F001         	call	_resetLedx
+  1153  0001AA  0012               	return	
+  1154  0001AC                     __end_of_highSpeedInterrupt:
+  1155                           	opt stack 0
+  1156                           pclatu	equ	0xFFB
+  1157                           pclath	equ	0xFFA
+  1158                           tblptru	equ	0xFF8
+  1159                           tblptrh	equ	0xFF7
+  1160                           tblptrl	equ	0xFF6
+  1161                           tablat	equ	0xFF5
+  1162                           prodh	equ	0xFF4
+  1163                           prodl	equ	0xFF3
+  1164                           intcon	equ	0xFF2
+  1165                           intcon2	equ	0xFF1
+  1166                           postinc0	equ	0xFEE
+  1167                           fsr0h	equ	0xFEA
+  1168                           fsr0l	equ	0xFE9
+  1169                           wreg	equ	0xFE8
+  1170                           fsr1h	equ	0xFE2
+  1171                           fsr1l	equ	0xFE1
+  1172                           bsr	equ	0xFE0
+  1173                           fsr2h	equ	0xFDA
+  1174                           fsr2l	equ	0xFD9
+  1175                           status	equ	0xFD8
+  1176                           
+  1177 ;; *************** function i1_loadTimer *****************
+  1178 ;; Defined at:
+  1179 ;;		line 61 in file "drivers.c"
+  1180 ;; Parameters:    Size  Location     Type
+  1181 ;;  data            2    0[COMRAM] unsigned short 
+  1182 ;; Auto vars:     Size  Location     Type
+  1183 ;;		None
+  1184 ;; Return value:  Size  Location     Type
+  1185 ;;		None               void
+  1186 ;; Registers used:
+  1187 ;;		wreg, status,2
+  1188 ;; Tracked objects:
+  1189 ;;		On entry : 0/0
+  1190 ;;		On exit  : 0/0
+  1191 ;;		Unchanged: 0/0
+  1192 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1193 ;;      Params:         2       0       0       0       0       0       0
+  1194 ;;      Locals:         0       0       0       0       0       0       0
+  1195 ;;      Temps:          3       0       0       0       0       0       0
+  1196 ;;      Totals:         5       0       0       0       0       0       0
+  1197 ;;Total ram usage:        5 bytes
+  1198 ;; Hardware stack levels used:    1
+  1199 ;; Hardware stack levels required when called:    2
+  1200 ;; This function calls:
+  1201 ;;		Nothing
+  1202 ;; This function is called by:
+  1203 ;;		_highSpeedInterrupt
+  1204 ;; This function uses a non-reentrant model
+  1205 ;;
+  1206                           
+  1207                           	psect	text12
+  1208  0002E8                     __ptext12:
+  1209                           	opt stack 0
+  1210  0002E8                     i1_loadTimer:
+  1211                           	opt stack 24
+  1212                           
+  1213                           ;drivers.c: 62: TMR0H = data>>8;
+  1214                           
+  1215                           ;incstack = 0
+  1216  0002E8  C002  F003         	movff	i1loadTimer@data+1,??i1_loadTimer
+  1217  0002EC  C003  F004         	movff	??i1_loadTimer,??i1_loadTimer+1
+  1218  0002F0  6A05               	clrf	(??i1_loadTimer+2)& (0+255),c
+  1219  0002F2  5004               	movf	??i1_loadTimer+1,w,c
+  1220  0002F4  6ED7               	movwf	4055,c	;volatile
+  1221                           
+  1222                           ;drivers.c: 63: TMR0L = data & 0x00FF;
+  1223  0002F6  C001  FFD6         	movff	i1loadTimer@data,4054	;volatile
+  1224  0002FA  0012               	return	
+  1225  0002FC                     __end_ofi1_loadTimer:
+  1226                           	opt stack 0
+  1227                           pclatu	equ	0xFFB
+  1228                           pclath	equ	0xFFA
+  1229                           tblptru	equ	0xFF8
+  1230                           tblptrh	equ	0xFF7
+  1231                           tblptrl	equ	0xFF6
+  1232                           tablat	equ	0xFF5
+  1233                           prodh	equ	0xFF4
+  1234                           prodl	equ	0xFF3
+  1235                           intcon	equ	0xFF2
+  1236                           intcon2	equ	0xFF1
+  1237                           postinc0	equ	0xFEE
+  1238                           fsr0h	equ	0xFEA
+  1239                           fsr0l	equ	0xFE9
+  1240                           wreg	equ	0xFE8
+  1241                           fsr1h	equ	0xFE2
+  1242                           fsr1l	equ	0xFE1
+  1243                           bsr	equ	0xFE0
+  1244                           fsr2h	equ	0xFDA
+  1245                           fsr2l	equ	0xFD9
+  1246                           status	equ	0xFD8
+  1247                           
+  1248 ;; *************** function _setLedx *****************
+  1249 ;; Defined at:
+  1250 ;;		line 90 in file "main.c"
+  1251 ;; Parameters:    Size  Location     Type
+  1252 ;;  x               1    wreg     unsigned char 
+  1253 ;; Auto vars:     Size  Location     Type
+  1254 ;;  x               1    2[COMRAM] unsigned char 
+  1255 ;;  mask            1    3[COMRAM] unsigned char 
+  1256 ;; Return value:  Size  Location     Type
+  1257 ;;		None               void
+  1258 ;; Registers used:
+  1259 ;;		wreg, status,2, status,0
+  1260 ;; Tracked objects:
+  1261 ;;		On entry : 0/0
+  1262 ;;		On exit  : 0/0
+  1263 ;;		Unchanged: 0/0
+  1264 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1265 ;;      Params:         0       0       0       0       0       0       0
+  1266 ;;      Locals:         2       0       0       0       0       0       0
+  1267 ;;      Temps:          2       0       0       0       0       0       0
+  1268 ;;      Totals:         4       0       0       0       0       0       0
+  1269 ;;Total ram usage:        4 bytes
+  1270 ;; Hardware stack levels used:    1
+  1271 ;; Hardware stack levels required when called:    2
+  1272 ;; This function calls:
+  1273 ;;		Nothing
+  1274 ;; This function is called by:
+  1275 ;;		_highSpeedInterrupt
+  1276 ;; This function uses a non-reentrant model
+  1277 ;;
+  1278                           
+  1279                           	psect	text13
+  1280  000268                     __ptext13:
+  1281                           	opt stack 0
+  1282  000268                     _setLedx:
+  1283                           	opt stack 24
+  1284                           
+  1285                           ;incstack = 0
+  1286                           ;setLedx@x stored from wreg
+  1287  000268  6E03               	movwf	setLedx@x,c
+  1288                           
+  1289                           ;main.c: 91: unsigned char mask = 0x01;
+  1290  00026A  0E01               	movlw	1
+  1291  00026C  6E04               	movwf	setLedx@mask,c
+  1292                           
+  1293                           ;main.c: 92: mask = mask<<x;
+  1294  00026E  C003  F001         	movff	setLedx@x,??_setLedx
+  1295  000272  C004  F002         	movff	setLedx@mask,??_setLedx+1
+  1296  000276  2A01               	incf	??_setLedx,f,c
+  1297  000278  D002               	goto	i1u1_24
+  1298  00027A                     i1u1_25:
+  1299  00027A  90D8               	bcf	status,0,c
+  1300  00027C  3602               	rlcf	??_setLedx+1,f,c
+  1301  00027E                     i1u1_24:
+  1302  00027E  2E01               	decfsz	??_setLedx,f,c
+  1303  000280  D7FC               	goto	i1u1_25
+  1304  000282  5002               	movf	??_setLedx+1,w,c
+  1305  000284  6E04               	movwf	setLedx@mask,c
+  1306                           
+  1307                           ;main.c: 93: leds |= mask;
+  1308  000286  5004               	movf	setLedx@mask,w,c
+  1309  000288  122F               	iorwf	_leds,f,c
+  1310  00028A  0012               	return	
+  1311  00028C                     __end_of_setLedx:
+  1312                           	opt stack 0
+  1313                           pclatu	equ	0xFFB
+  1314                           pclath	equ	0xFFA
+  1315                           tblptru	equ	0xFF8
+  1316                           tblptrh	equ	0xFF7
+  1317                           tblptrl	equ	0xFF6
+  1318                           tablat	equ	0xFF5
+  1319                           prodh	equ	0xFF4
+  1320                           prodl	equ	0xFF3
+  1321                           intcon	equ	0xFF2
+  1322                           intcon2	equ	0xFF1
+  1323                           postinc0	equ	0xFEE
+  1324                           fsr0h	equ	0xFEA
+  1325                           fsr0l	equ	0xFE9
+  1326                           wreg	equ	0xFE8
+  1327                           fsr1h	equ	0xFE2
+  1328                           fsr1l	equ	0xFE1
+  1329                           bsr	equ	0xFE0
+  1330                           fsr2h	equ	0xFDA
+  1331                           fsr2l	equ	0xFD9
+  1332                           status	equ	0xFD8
+  1333                           
+  1334 ;; *************** function _resetLedx *****************
+  1335 ;; Defined at:
+  1336 ;;		line 96 in file "main.c"
+  1337 ;; Parameters:    Size  Location     Type
+  1338 ;;  x               1    wreg     unsigned char 
+  1339 ;; Auto vars:     Size  Location     Type
+  1340 ;;  x               1    2[COMRAM] unsigned char 
+  1341 ;;  mask            1    3[COMRAM] unsigned char 
+  1342 ;; Return value:  Size  Location     Type
+  1343 ;;		None               void
+  1344 ;; Registers used:
+  1345 ;;		wreg, status,2, status,0
+  1346 ;; Tracked objects:
+  1347 ;;		On entry : 0/0
+  1348 ;;		On exit  : 0/0
+  1349 ;;		Unchanged: 0/0
+  1350 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1351 ;;      Params:         0       0       0       0       0       0       0
+  1352 ;;      Locals:         2       0       0       0       0       0       0
+  1353 ;;      Temps:          2       0       0       0       0       0       0
+  1354 ;;      Totals:         4       0       0       0       0       0       0
+  1355 ;;Total ram usage:        4 bytes
+  1356 ;; Hardware stack levels used:    1
+  1357 ;; Hardware stack levels required when called:    2
+  1358 ;; This function calls:
+  1359 ;;		Nothing
+  1360 ;; This function is called by:
+  1361 ;;		_highSpeedInterrupt
+  1362 ;; This function uses a non-reentrant model
+  1363 ;;
+  1364                           
+  1365                           	psect	text14
+  1366  000242                     __ptext14:
+  1367                           	opt stack 0
+  1368  000242                     _resetLedx:
+  1369                           	opt stack 24
+  1370                           
+  1371                           ;incstack = 0
+  1372                           ;resetLedx@x stored from wreg
+  1373  000242  6E03               	movwf	resetLedx@x,c
+  1374                           
+  1375                           ;main.c: 97: unsigned char mask = 0x01;
+  1376  000244  0E01               	movlw	1
+  1377  000246  6E04               	movwf	resetLedx@mask,c
+  1378                           
+  1379                           ;main.c: 98: mask = ~(mask<<x);
+  1380  000248  C003  F001         	movff	resetLedx@x,??_resetLedx
+  1381  00024C  C004  F002         	movff	resetLedx@mask,??_resetLedx+1
+  1382  000250  2A01               	incf	??_resetLedx,f,c
+  1383  000252  D002               	goto	i1u2_24
+  1384  000254                     i1u2_25:
+  1385  000254  90D8               	bcf	status,0,c
+  1386  000256  3602               	rlcf	??_resetLedx+1,f,c
+  1387  000258                     i1u2_24:
+  1388  000258  2E01               	decfsz	??_resetLedx,f,c
+  1389  00025A  D7FC               	goto	i1u2_25
+  1390  00025C  5002               	movf	??_resetLedx+1,w,c
+  1391  00025E  0AFF               	xorlw	255
+  1392  000260  6E04               	movwf	resetLedx@mask,c
+  1393                           
+  1394                           ;main.c: 99: leds &= mask;
+  1395  000262  5004               	movf	resetLedx@mask,w,c
+  1396  000264  162F               	andwf	_leds,f,c
+  1397  000266  0012               	return	
+  1398  000268                     __end_of_resetLedx:
+  1399                           	opt stack 0
+  1400                           pclatu	equ	0xFFB
+  1401                           pclath	equ	0xFFA
+  1402                           tblptru	equ	0xFF8
+  1403                           tblptrh	equ	0xFF7
+  1404                           tblptrl	equ	0xFF6
+  1405                           tablat	equ	0xFF5
+  1406                           prodh	equ	0xFF4
+  1407                           prodl	equ	0xFF3
+  1408                           intcon	equ	0xFF2
+  1409                           intcon2	equ	0xFF1
+  1410                           postinc0	equ	0xFEE
+  1411                           fsr0h	equ	0xFEA
+  1412                           fsr0l	equ	0xFE9
+  1413                           wreg	equ	0xFE8
+  1414                           fsr1h	equ	0xFE2
+  1415                           fsr1l	equ	0xFE1
+  1416                           bsr	equ	0xFE0
+  1417                           fsr2h	equ	0xFDA
+  1418                           fsr2l	equ	0xFD9
+  1419                           status	equ	0xFD8
+  1420                           
+  1421 ;; *************** function _clearTimerInterruptRequest *****************
+  1422 ;; Defined at:
+  1423 ;;		line 47 in file "drivers.c"
+  1424 ;; Parameters:    Size  Location     Type
+  1425 ;;		None
+  1426 ;; Auto vars:     Size  Location     Type
+  1427 ;;		None
+  1428 ;; Return value:  Size  Location     Type
+  1429 ;;		None               void
+  1430 ;; Registers used:
+  1431 ;;		None
+  1432 ;; Tracked objects:
+  1433 ;;		On entry : 0/0
+  1434 ;;		On exit  : 0/0
+  1435 ;;		Unchanged: 0/0
+  1436 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1437 ;;      Params:         0       0       0       0       0       0       0
+  1438 ;;      Locals:         0       0       0       0       0       0       0
+  1439 ;;      Temps:          0       0       0       0       0       0       0
+  1440 ;;      Totals:         0       0       0       0       0       0       0
+  1441 ;;Total ram usage:        0 bytes
+  1442 ;; Hardware stack levels used:    1
+  1443 ;; Hardware stack levels required when called:    2
+  1444 ;; This function calls:
+  1445 ;;		Nothing
+  1446 ;; This function is called by:
+  1447 ;;		_timerInterrupt
+  1448 ;; This function uses a non-reentrant model
+  1449 ;;
+  1450                           
+  1451                           	psect	text15
+  1452  00031C                     __ptext15:
+  1453                           	opt stack 0
+  1454  00031C                     _clearTimerInterruptRequest:
+  1455                           	opt stack 25
+  1456                           
+  1457                           ;drivers.c: 48: INTCONbits.T0IF = 0;
+  1458                           
+  1459                           ;incstack = 0
+  1460  00031C  94F2               	bcf	intcon,2,c	;volatile
+  1461  00031E  0012               	return	
+  1462  000320                     __end_of_clearTimerInterruptRequest:
+  1463                           	opt stack 0
+  1464                           pclatu	equ	0xFFB
+  1465                           pclath	equ	0xFFA
+  1466                           tblptru	equ	0xFF8
+  1467                           tblptrh	equ	0xFF7
+  1468                           tblptrl	equ	0xFF6
+  1469                           tablat	equ	0xFF5
+  1470                           prodh	equ	0xFF4
+  1471                           prodl	equ	0xFF3
+  1472                           intcon	equ	0xFF2
+  1473                           intcon2	equ	0xFF1
+  1474                           postinc0	equ	0xFEE
+  1475                           fsr0h	equ	0xFEA
+  1476                           fsr0l	equ	0xFE9
+  1477                           wreg	equ	0xFE8
+  1478                           fsr1h	equ	0xFE2
+  1479                           fsr1l	equ	0xFE1
+  1480                           bsr	equ	0xFE0
+  1481                           fsr2h	equ	0xFDA
+  1482                           fsr2l	equ	0xFD9
+  1483                           status	equ	0xFD8
+  1484                           
+  1485 ;; *************** function _buttonInterrupt *****************
+  1486 ;; Defined at:
+  1487 ;;		line 32 in file "main.c"
+  1488 ;; Parameters:    Size  Location     Type
+  1489 ;;		None
+  1490 ;; Auto vars:     Size  Location     Type
+  1491 ;;		None
+  1492 ;; Return value:  Size  Location     Type
+  1493 ;;		None               void
+  1494 ;; Registers used:
+  1495 ;;		wreg, status,2, cstack
+  1496 ;; Tracked objects:
+  1497 ;;		On entry : 0/0
+  1498 ;;		On exit  : 0/0
+  1499 ;;		Unchanged: 0/0
+  1500 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1501 ;;      Params:         0       0       0       0       0       0       0
+  1502 ;;      Locals:         0       0       0       0       0       0       0
+  1503 ;;      Temps:         14       0       0       0       0       0       0
+  1504 ;;      Totals:        14       0       0       0       0       0       0
+  1505 ;;Total ram usage:       14 bytes
+  1506 ;; Hardware stack levels used:    1
+  1507 ;; Hardware stack levels required when called:    1
+  1508 ;; This function calls:
+  1509 ;;		_clearButtonInterruptRequest
+  1510 ;; This function is called by:
+  1511 ;;		Interrupt level 2
+  1512 ;; This function uses a non-reentrant model
+  1513 ;;
+  1514                           
+  1515                           	psect	intcode
+  1516  000008                     __pintcode:
+  1517                           	opt stack 0
+  1518  000008                     _buttonInterrupt:
+  1519                           	opt stack 24
+  1520                           
+  1521                           ;incstack = 0
+  1522  000008  CFFA F017          	movff	pclath,??_buttonInterrupt
+  1523  00000C  CFFB F018          	movff	pclatu,??_buttonInterrupt+1
+  1524  000010  CFE9 F019          	movff	fsr0l,??_buttonInterrupt+2
+  1525  000014  EF75  F000         	goto	int_func
+  1526                           pclatu	equ	0xFFB
+  1527                           pclath	equ	0xFFA
+  1528                           tblptru	equ	0xFF8
+  1529                           tblptrh	equ	0xFF7
+  1530                           tblptrl	equ	0xFF6
+  1531                           tablat	equ	0xFF5
+  1532                           prodh	equ	0xFF4
+  1533                           prodl	equ	0xFF3
+  1534                           intcon	equ	0xFF2
+  1535                           intcon2	equ	0xFF1
+  1536                           postinc0	equ	0xFEE
+  1537                           fsr0h	equ	0xFEA
+  1538                           fsr0l	equ	0xFE9
+  1539                           wreg	equ	0xFE8
+  1540                           fsr1h	equ	0xFE2
+  1541                           fsr1l	equ	0xFE1
+  1542                           bsr	equ	0xFE0
+  1543                           fsr2h	equ	0xFDA
+  1544                           fsr2l	equ	0xFD9
+  1545                           status	equ	0xFD8
+  1546                           
+  1547                           	psect	intcode_body
+  1548  0000EA                     __pintcode_body:
+  1549                           	opt stack 24
+  1550  0000EA                     int_func:
+  1551                           	opt stack 24
+  1552  0000EA  CFEA F01A          	movff	fsr0h,??_buttonInterrupt+3
+  1553  0000EE  CFE1 F01B          	movff	fsr1l,??_buttonInterrupt+4
+  1554  0000F2  CFE2 F01C          	movff	fsr1h,??_buttonInterrupt+5
+  1555  0000F6  CFD9 F01D          	movff	fsr2l,??_buttonInterrupt+6
+  1556  0000FA  CFDA F01E          	movff	fsr2h,??_buttonInterrupt+7
+  1557  0000FE  CFF3 F01F          	movff	prodl,??_buttonInterrupt+8
+  1558  000102  CFF4 F020          	movff	prodh,??_buttonInterrupt+9
+  1559  000106  CFF6 F021          	movff	tblptrl,??_buttonInterrupt+10
+  1560  00010A  CFF7 F022          	movff	tblptrh,??_buttonInterrupt+11
+  1561  00010E  CFF8 F023          	movff	tblptru,??_buttonInterrupt+12
+  1562  000112  CFF5 F024          	movff	tablat,??_buttonInterrupt+13
+  1563                           
+  1564                           ;main.c: 34: leds=0x00;
+  1565  000116  0E00               	movlw	0
+  1566  000118  6E2F               	movwf	_leds,c
+  1567                           
+  1568                           ;main.c: 35: clearButtonInterruptRequest();
+  1569  00011A  EC90  F001         	call	_clearButtonInterruptRequest	;wreg free
+  1570  00011E  C024  FFF5         	movff	??_buttonInterrupt+13,tablat
+  1571  000122  C023  FFF8         	movff	??_buttonInterrupt+12,tblptru
+  1572  000126  C022  FFF7         	movff	??_buttonInterrupt+11,tblptrh
+  1573  00012A  C021  FFF6         	movff	??_buttonInterrupt+10,tblptrl
+  1574  00012E  C020  FFF4         	movff	??_buttonInterrupt+9,prodh
+  1575  000132  C01F  FFF3         	movff	??_buttonInterrupt+8,prodl
+  1576  000136  C01E  FFDA         	movff	??_buttonInterrupt+7,fsr2h
+  1577  00013A  C01D  FFD9         	movff	??_buttonInterrupt+6,fsr2l
+  1578  00013E  C01C  FFE2         	movff	??_buttonInterrupt+5,fsr1h
+  1579  000142  C01B  FFE1         	movff	??_buttonInterrupt+4,fsr1l
+  1580  000146  C01A  FFEA         	movff	??_buttonInterrupt+3,fsr0h
+  1581  00014A  C019  FFE9         	movff	??_buttonInterrupt+2,fsr0l
+  1582  00014E  C018  FFFB         	movff	??_buttonInterrupt+1,pclatu
+  1583  000152  C017  FFFA         	movff	??_buttonInterrupt,pclath
+  1584  000156  0011               	retfie		f
+  1585  000158                     __end_of_buttonInterrupt:
+  1586                           	opt stack 0
+  1587                           pclatu	equ	0xFFB
+  1588                           pclath	equ	0xFFA
+  1589                           tblptru	equ	0xFF8
+  1590                           tblptrh	equ	0xFF7
+  1591                           tblptrl	equ	0xFF6
+  1592                           tablat	equ	0xFF5
+  1593                           prodh	equ	0xFF4
+  1594                           prodl	equ	0xFF3
+  1595                           intcon	equ	0xFF2
+  1596                           intcon2	equ	0xFF1
+  1597                           postinc0	equ	0xFEE
+  1598                           fsr0h	equ	0xFEA
+  1599                           fsr0l	equ	0xFE9
+  1600                           wreg	equ	0xFE8
+  1601                           fsr1h	equ	0xFE2
+  1602                           fsr1l	equ	0xFE1
+  1603                           bsr	equ	0xFE0
+  1604                           fsr2h	equ	0xFDA
+  1605                           fsr2l	equ	0xFD9
+  1606                           status	equ	0xFD8
+  1607                           
+  1608 ;; *************** function _clearButtonInterruptRequest *****************
+  1609 ;; Defined at:
+  1610 ;;		line 34 in file "drivers.c"
+  1611 ;; Parameters:    Size  Location     Type
+  1612 ;;		None
+  1613 ;; Auto vars:     Size  Location     Type
+  1614 ;;		None
+  1615 ;; Return value:  Size  Location     Type
+  1616 ;;		None               void
+  1617 ;; Registers used:
+  1618 ;;		None
+  1619 ;; Tracked objects:
+  1620 ;;		On entry : 0/0
+  1621 ;;		On exit  : 0/0
+  1622 ;;		Unchanged: 0/0
+  1623 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1624 ;;      Params:         0       0       0       0       0       0       0
+  1625 ;;      Locals:         0       0       0       0       0       0       0
+  1626 ;;      Temps:          0       0       0       0       0       0       0
+  1627 ;;      Totals:         0       0       0       0       0       0       0
+  1628 ;;Total ram usage:        0 bytes
+  1629 ;; Hardware stack levels used:    1
+  1630 ;; This function calls:
+  1631 ;;		Nothing
+  1632 ;; This function is called by:
+  1633 ;;		_buttonInterrupt
+  1634 ;; This function uses a non-reentrant model
+  1635 ;;
+  1636                           
+  1637                           	psect	text17
+  1638  000320                     __ptext17:
+  1639                           	opt stack 0
+  1640  000320                     _clearButtonInterruptRequest:
+  1641                           	opt stack 24
+  1642                           
+  1643                           ;drivers.c: 35: INTCONbits.INT0IF = 0;
+  1644                           
+  1645                           ;incstack = 0
+  1646  000320  92F2               	bcf	intcon,1,c	;volatile
+  1647  000322  0012               	return	
+  1648  000324                     __end_of_clearButtonInterruptRequest:
+  1649                           	opt stack 0
+  1650  0000                     pclatu	equ	0xFFB
+  1651                           pclath	equ	0xFFA
+  1652                           tblptru	equ	0xFF8
+  1653                           tblptrh	equ	0xFF7
+  1654                           tblptrl	equ	0xFF6
+  1655                           tablat	equ	0xFF5
+  1656                           prodh	equ	0xFF4
+  1657                           prodl	equ	0xFF3
+  1658                           intcon	equ	0xFF2
+  1659                           intcon2	equ	0xFF1
+  1660                           postinc0	equ	0xFEE
+  1661                           fsr0h	equ	0xFEA
+  1662                           fsr0l	equ	0xFE9
+  1663                           wreg	equ	0xFE8
+  1664                           fsr1h	equ	0xFE2
+  1665                           fsr1l	equ	0xFE1
+  1666                           bsr	equ	0xFE0
+  1667                           fsr2h	equ	0xFDA
+  1668                           fsr2l	equ	0xFD9
+  1669                           status	equ	0xFD8
+  1670                           pclatu	equ	0xFFB
+  1671                           pclath	equ	0xFFA
+  1672                           tblptru	equ	0xFF8
+  1673                           tblptrh	equ	0xFF7
+  1674                           tblptrl	equ	0xFF6
+  1675                           tablat	equ	0xFF5
+  1676                           prodh	equ	0xFF4
+  1677                           prodl	equ	0xFF3
+  1678                           intcon	equ	0xFF2
+  1679                           intcon2	equ	0xFF1
+  1680                           postinc0	equ	0xFEE
+  1681                           fsr0h	equ	0xFEA
+  1682                           fsr0l	equ	0xFE9
+  1683                           wreg	equ	0xFE8
+  1684                           fsr1h	equ	0xFE2
+  1685                           fsr1l	equ	0xFE1
+  1686                           bsr	equ	0xFE0
+  1687                           fsr2h	equ	0xFDA
+  1688                           fsr2l	equ	0xFD9
+  1689                           status	equ	0xFD8
+  1690                           
+  1691                           	psect	rparam
+  1692  0000                     pclatu	equ	0xFFB
+  1693                           pclath	equ	0xFFA
+  1694                           tblptru	equ	0xFF8
+  1695                           tblptrh	equ	0xFF7
+  1696                           tblptrl	equ	0xFF6
+  1697                           tablat	equ	0xFF5
+  1698                           prodh	equ	0xFF4
+  1699                           prodl	equ	0xFF3
+  1700                           intcon	equ	0xFF2
+  1701                           intcon2	equ	0xFF1
+  1702                           postinc0	equ	0xFEE
+  1703                           fsr0h	equ	0xFEA
+  1704                           fsr0l	equ	0xFE9
+  1705                           wreg	equ	0xFE8
+  1706                           fsr1h	equ	0xFE2
+  1707                           fsr1l	equ	0xFE1
+  1708                           bsr	equ	0xFE0
+  1709                           fsr2h	equ	0xFDA
+  1710                           fsr2l	equ	0xFD9
+  1711                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        3
+    BSS         7
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95     42      52
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    _main->_loadTimer
+
+Critical Paths under _buttonInterrupt in COMRAM
+
+    None.
+
+Critical Paths under _timerInterrupt in COMRAM
+
+    _highSpeedInterrupt->i1_loadTimer
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _buttonInterrupt in BANK0
+
+    None.
+
+Critical Paths under _timerInterrupt in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _buttonInterrupt in BANK1
+
+    None.
+
+Critical Paths under _timerInterrupt in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _buttonInterrupt in BANK2
+
+    None.
+
+Critical Paths under _timerInterrupt in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _buttonInterrupt in BANK3
+
+    None.
+
+Critical Paths under _timerInterrupt in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _buttonInterrupt in BANK4
+
+    None.
+
+Critical Paths under _timerInterrupt in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _buttonInterrupt in BANK5
+
+    None.
+
+Critical Paths under _timerInterrupt in BANK5
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 1     1      0     230
+                                             41 COMRAM     1     1      0
+              _buttonInterruptEnable
+                               _init
+                          _initTimer
+                    _interruptEnable
+                          _loadTimer
+                            _setLeds
+               _timerInterruptEnable
+ ---------------------------------------------------------------------------------
+ (1) _timerInterruptEnable                                 0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _setLeds                                              1     1      0      15
+                                             36 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _loadTimer                                            5     3      2     117
+                                             36 COMRAM     5     3      2
+ ---------------------------------------------------------------------------------
+ (1) _interruptEnable                                      0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _initTimer                                            2     1      1      98
+                                             36 COMRAM     2     1      1
+ ---------------------------------------------------------------------------------
+ (1) _init                                                 0     0      0       0
+                           _ADC_Init
+ ---------------------------------------------------------------------------------
+ (2) _ADC_Init                                             0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _buttonInterruptEnable                                0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (3) _timerInterrupt                                      17    17      0     139
+                                              5 COMRAM    17    17      0
+         _clearTimerInterruptRequest
+                 _highSpeedInterrupt
+                  _lowSpeedInterrupt
+ ---------------------------------------------------------------------------------
+ (4) _lowSpeedInterrupt                                    0     0      0       0
+ ---------------------------------------------------------------------------------
+ (4) _highSpeedInterrupt                                   0     0      0     139
+                          _resetLedx
+                            _setLedx
+                        i1_loadTimer
+ ---------------------------------------------------------------------------------
+ (5) i1_loadTimer                                          5     3      2      49
+                                              0 COMRAM     5     3      2
+ ---------------------------------------------------------------------------------
+ (5) _setLedx                                              4     4      0      45
+                                              0 COMRAM     4     4      0
+ ---------------------------------------------------------------------------------
+ (5) _resetLedx                                            4     4      0      45
+                                              0 COMRAM     4     4      0
+ ---------------------------------------------------------------------------------
+ (4) _clearTimerInterruptRequest                           0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 5
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (6) _buttonInterrupt                                     14    14      0       0
+                                             22 COMRAM    14    14      0
+        _clearButtonInterruptRequest
+ ---------------------------------------------------------------------------------
+ (7) _clearButtonInterruptRequest                          0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 7
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _buttonInterruptEnable
+   _init
+     _ADC_Init
+   _initTimer
+   _interruptEnable
+   _loadTimer
+   _setLeds
+   _timerInterruptEnable
+
+ _timerInterrupt (ROOT)
+   _clearTimerInterruptRequest
+   _highSpeedInterrupt
+     _resetLedx
+     _setLedx
+     i1_loadTimer
+   _lowSpeedInterrupt
+
+ _buttonInterrupt (ROOT)
+   _clearButtonInterruptRequest
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             5FF      0       0      17        0.0%
+EEDATA             100      0       0       0        0.0%
+BITBANK5           100      0       0      16        0.0%
+BANK5              100      0       0      14        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITCOMRAM           5F      0       0       0        0.0%
+COMRAM              5F     2A      34       1       54.7%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      34      15        0.0%
+DATA                 0      0      34       3        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.33 build 59893 
+Symbol Table                                                                                   Mon Oct 13 22:01:30 2014
+
+                                  u35 029C                                    u36 029E  
+                                  bsr 000FE0            __end_of_highSpeedInterrupt 01AC  
+                                 l865 023A               __end_of_interruptEnable 0314  
+                                 wreg 000FE8                          __CFG_LVP$OFF 000000  
+                                _LATD 000F8C          __end_of_timerInterruptEnable 0304  
+                                _main 0212                                  _leds 002F  
+                                _init 02D4                                  fsr0h 000FEA  
+                                fsr1h 000FE2                                  fsr0l 000FE9  
+                                fsr2h 000FDA                                  fsr1l 000FE1  
+                                fsr2l 000FD9                      __end_of_ADC_Init 02C0  
+                                pclat 000FFA                                  prodh 000FF4  
+                                prodl 000FF3                                  start 00E6  
+                    ??_timerInterrupt 0006                           i1_loadTimer 02E8  
+                               ?_main 0001                                 ?_init 0001  
+                               _ANSEL 000F7E                                 _T0CON 000FD5  
+                               i1l833 01D6                                 i1l845 0182  
+                               i1l849 0196                                 i1l877 0098  
+                               _TMR0H 000FD7                                 _TMR0L 000FD6  
+                               _TRISD 000F95                                 _first 0033  
+                               _third 0031                                 main@m 002A  
+                     __end_of_setLeds 030C                       __end_of_setLedx 028C  
+                               tablat 000FF5                    initTimer@prescaler 0026  
+                               status 000FD8                        __CFG_MCLRE$OFF 000000  
+                     __initialization 01E2                          __end_of_main 0242  
+                        __end_of_init 02E8                                ??_main 002A  
+                              ??_init 0025                         __activetblptr 000000  
+                    ?_interruptEnable 0001                                _ADCON0 000FC2  
+                              _ADCON1 000FC1                                _ADCON2 000FC0  
+                              _ADRESH 000FC4                                _ANSELH 000F7F  
+                      __CFG_WDTEN$OFF 000000                                i1u1_24 027E  
+                              i1u1_25 027A                                i1u2_24 0258  
+                              i1u2_25 0254               ??_buttonInterruptEnable 0025  
+ __end_of_clearButtonInterruptRequest 0324           _clearButtonInterruptRequest 0320  
+                              clear_0 01E8                                _second 0034  
+                     _buttonInterrupt 0008                  _timerInterruptEnable 02FC  
+                        __pdataCOMRAM 0032                             ?_ADC_Init 0001  
+       ??_clearButtonInterruptRequest 0017                             ??_setLeds 0025  
+                           ??_setLedx 0001                                tblptrh 000FF7  
+                              tblptrl 000FF6                                tblptru 000FF8  
+                          __accesstop 0060               __end_of__initialization 020C  
+                      __pcstackCOMRAM 0001                 ?_timerInterruptEnable 0001  
+                          ??_ADC_Init 0025                    _highSpeedInterrupt 0158  
+                  __size_of_loadTimer 0014                    __size_of_initTimer 001C  
+                 ?_highSpeedInterrupt 0001               __end_of_buttonInterrupt 0158  
+                         setLedx@mask 0004                    __size_of_resetLedx 0026  
+                        ?i1_loadTimer 0001                  ??_highSpeedInterrupt 0006  
+                             i1u12_25 0080                               __Hparam 0000  
+                             __Lparam 0000                ??_timerInterruptEnable 0025  
+                             __pcinit 01E2                             _ANSELbits 000F7E  
+                             __ramtop 0600                               __ptext0 0212  
+                             __ptext1 02FC                               __ptext2 0304  
+                             __ptext3 02C0                               __ptext4 030C  
+                             __ptext5 028C                               __ptext6 02D4  
+                             __ptext7 02A8                               __ptext8 0314  
+                   __end_of_loadTimer 02D4                     __end_of_initTimer 02A8  
+                             _setLeds 0304                               _setLedx 0268  
+                      __pintcode_body 00EA                  end_of_initialization 020C  
+                   __end_of_resetLedx 0268                               int_func 00EA  
+                    ?_buttonInterrupt 0001                               postinc0 000FEE  
+      __size_of_buttonInterruptEnable 0008         __end_of_buttonInterruptEnable 031C  
+                           _PORTBbits 000F81               __size_of_timerInterrupt 00CE  
+                           _TRISBbits 000F93                     __size_of_ADC_Init 0018  
+            __size_of_interruptEnable 0008                         __pidataCOMRAM 0324  
+                __size_ofi1_loadTimer 0014                   start_initialization 01E2  
+                   initTimer@priority 0025   __size_of_clearTimerInterruptRequest 0004  
+                       resetLedx@mask 0004                           __pbssCOMRAM 002B  
+                   ??_interruptEnable 0025                             __pintcode 0008  
+                           _direction 0032                           __pintcodelo 0018  
+                      _timerInterrupt 0018           __size_of_highSpeedInterrupt 0054  
+                            _ADC_Init 02A8                              ?_setLeds 0001  
+                            ?_setLedx 0001                            resetLedx@x 0003  
+                           _loadTimer 02C0                             _initTimer 028C  
+                       loadTimer@data 0025                             _resetLedx 0242  
+  __end_of_clearTimerInterruptRequest 0320            _clearTimerInterruptRequest 031C  
+                            _RCONbits 000FD0          ?_clearButtonInterruptRequest 0001  
+              __end_of_timerInterrupt 00E6         __size_of_timerInterruptEnable 0008  
+                          _ADCON0bits 000FC2                              _WPUBbits 000F7C  
+                          ?_loadTimer 0025                            ?_initTimer 0025  
+                         _INTCON2bits 000FF1                     _lowSpeedInterrupt 01AC  
+                  ?_lowSpeedInterrupt 0001                            ?_resetLedx 0001  
+                            __Hrparam 0000                              __Lrparam 0000  
+                 ??_lowSpeedInterrupt 0001                       ?_timerInterrupt 0001  
+               _buttonInterruptEnable 0314              __size_of_buttonInterrupt 0150  
+                    __size_of_setLeds 0008             __end_of_lowSpeedInterrupt 01E2  
+                    __size_of_setLedx 0024                              __ptext10 01AC  
+                            __ptext11 0158                              __ptext12 02E8  
+                            __ptext13 0268                              __ptext14 0242  
+                            __ptext15 031C                              __ptext17 0320  
+              _lowSpeedInterruptCount 0030                         __size_of_main 0030  
+                       __size_of_init 0014                       i1loadTimer@data 0001  
+                       ??i1_loadTimer 0003                            _INTCONbits 000FF2  
+                         ??_loadTimer 0027                           ??_initTimer 0026  
+                     _interruptEnable 030C                              intlevel1 0000  
+                            intlevel2 0000  __size_of_clearButtonInterruptRequest 0004  
+                            setLeds@x 0025                              setLedx@x 0003  
+                         ??_resetLedx 0001          ??_clearTimerInterruptRequest 0001  
+              ?_buttonInterruptEnable 0001                        _interruptCount 002B  
+                 __end_ofi1_loadTimer 02FC            __size_of_lowSpeedInterrupt 0036  
+                   ??_buttonInterrupt 0017                     __CFG_FOSC$INTIO67 000000  
+         ?_clearTimerInterruptRequest 0001  
