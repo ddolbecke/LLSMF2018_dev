@@ -55,7 +55,7 @@ void main (void)
     initTimer1(1250, T1_PS_1_8); // 100 interrupts per second
 
     timer1InterruptEnable();
-// t
+
     while(1){
         if(newKey)
             txt[x] = key;
@@ -77,8 +77,9 @@ void timer1Interrupt(void)
     setLeds(rows);
     
     if(rows != 0xf){
+        // add some code here
         for(row=0; row<4;row++){
-            if( ((rows>>row) & 0b0001) == 0 ){
+            if( ( (rows>>row) & 0b0001) == 0 ){
                 key = keys[row][col];
                  
                 newKey = 1;
