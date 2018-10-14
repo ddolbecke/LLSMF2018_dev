@@ -55,8 +55,7 @@ void main (void)
     initTimer1(1250, T1_PS_1_8); // 100 interrupts per second
 
     timer1InterruptEnable();
-
-
+// t
     while(1){
         if(newKey)
             txt[x] = key;
