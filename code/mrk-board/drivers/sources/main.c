@@ -86,10 +86,9 @@ void timer1Interrupt(void)
                 keyReleased = 0;
             }     
         }  
-    }
-        
- 
+    }  
     
+  
     col+=1;
     if(col>3){
         col = 0;
@@ -99,10 +98,8 @@ void timer1Interrupt(void)
             if(x>15)
                 x = 0;
         }
-        keyReleased = 1;
-       
-    }
-       
+        keyReleased = 1;  
+    }    
     keypad_setCols((1<<col)^0xF);
 
     

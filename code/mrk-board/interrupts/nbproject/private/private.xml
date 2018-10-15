@@ -4,10 +4,6 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/dim/work/enseignement/LLSMF2018_dev/code/mrk-board/interrupts/drivers/scope.h</file>
-            <file>file:/home/dim/work/enseignement/LLSMF2018_dev/code/mrk-board/interrupts/drivers/FillPat.c</file>
-            <file>file:/home/dim/work/enseignement/LLSMF2018_dev/code/mrk-board/interrupts/drivers/PmodBTN.c</file>
-            <file>file:/home/dim/work/enseignement/LLSMF2018_dev/code/mrk-board/interrupts/drivers/mx4.c</file>
-            <file>file:/home/dim/work/enseignement/LLSMF2018_dev/code/mrk-board/interrupts/drivers/motors.c</file>
             <file>file:/home/dim/work/enseignement/LLSMF2018_dev/code/mrk-board/interrupts/sources/main.c</file>
         </group>
     </open-files>
