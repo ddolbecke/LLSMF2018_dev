@@ -20,17 +20,20 @@
 #include "interrupts.h"
 #include "PmodIR_Range.h"
 #include "PmodKYPD.h"
+
 /* ------------------------------------------------------------ */
 /*				global variables								*/
 /* ------------------------------------------------------------ */
-char cs=0, s=0, min=0, btn1released=1, start;
+/*char cs=0, s=0, min=0, btn1released=1, start;
 unsigned short d1,d2,d3,d4;
 char button1Released = 1, keyReleased=1, newKey=0;
 char distType = 0;
 char col, row, rows,x=0, key;
-char txt1[17], txt0[17];
+char txt[17];
 // key (row, col)
 char keys[4][4] = { { '0', 'F', 'E', 'D' }, { '7', '8', '9', 'C' } , { '4', '5', '6', 'B' }, { '1', '2', '3', 'A' } }; 
+ */
+int buzz = 0;
 /* ------------------------------------------------------------ */
 /*				   functions    								*/
 /* ------------------------------------------------------------ */
@@ -43,31 +46,26 @@ void main (void)
     
 
     initIO();
+    initBuzzer();
     //setLeds(0xa);
     //initDelay();
     //initSonar();
     //initAnalogInputs(1);
-    initLCD();
-    initServo();
+   // initLCD();
     //initIR_range();
     //initLS1();
     //initMotors();
     
-    initTimer1(1250, T1_PS_1_8); // 100 interrupts per second
+    initTimer1(625, T1_PS_1_8); // 100 interrupts per second
 
     timer1InterruptEnable();
-
     while(1){
-        
+       /* if(newKey)
+            txt[x] = key;
 
-        sprintf(txt0, "%d              ",(key-'0')*10);
-        writeLine(txt0, 0);
+        writeLine(txt, 1);
+        */
         
-        if(newKey)
-            txt1[x] = key;
-        
-        writeLine(txt1, 1);
-        setServoAngle( (key-'0')*10);
     }
 }
 
@@ -79,22 +77,32 @@ void main (void)
 
 void timer1Interrupt(void)
 {
-    rows = keypad_readRows();
+    if(getButton1()){
+        if(buzz == 0){
+            buzz = 1;
+            setBuzzer3(0b1);
+        }
+        else{
+            buzz = 0;
+            setBuzzer3(0b00);
+        }
+    }
+   /* rows = keypad_readRows();
     setLeds(rows);
     
     if(rows != 0xf){
-        // add some code here
         for(row=0; row<4;row++){
-            if( ( (rows>>row) & 0b0001) == 0 ){
+            if( ((rows>>row) & 0b0001) == 0 ){
                 key = keys[row][col];
                  
                 newKey = 1;
                 keyReleased = 0;
             }     
         }  
-    }  
+    }
+        
+ 
     
-  
     col+=1;
     if(col>3){
         col = 0;
@@ -104,8 +112,10 @@ void timer1Interrupt(void)
             if(x>15)
                 x = 0;
         }
-        keyReleased = 1;  
-    }    
+        keyReleased = 1;
+       
+    }
+       
     keypad_setCols((1<<col)^0xF);
 
     
@@ -115,12 +125,12 @@ void timer1Interrupt(void)
         x -=1;
         if(x<0)
             x=15;
-        txt1[x] = ' ';
+        txt[x] = ' ';
     }
     if(!getButton1()){
         button1Released = 1;
     }
     
-    
+    */
     
 }
