@@ -10,7 +10,7 @@
 void setServoAngle(unsigned short angle) {
     servo_angle = angle;
 }
-
+intCount = 0;
 void initServo() {
     enable10usInterrupts();
     
@@ -72,7 +72,7 @@ void setServoEnable(unsigned char enable) {
 
 
 void servo10usRoutine(void){
-    unsigned short servo_angle_norm;
+    unsigned short servo_angle_norm;  
     servo_count++;
     if (servo_angle > 180)
         servo_angle_norm = 180;

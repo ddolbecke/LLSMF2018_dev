@@ -28,7 +28,7 @@ unsigned short d1,d2,d3,d4;
 char button1Released = 1, keyReleased=1, newKey=0;
 char distType = 0;
 char col, row, rows,x=0, key;
-char txt[17];
+char txt1[17], txt0[17];
 // key (row, col)
 char keys[4][4] = { { '0', 'F', 'E', 'D' }, { '7', '8', '9', 'C' } , { '4', '5', '6', 'B' }, { '1', '2', '3', 'A' } }; 
 /* ------------------------------------------------------------ */
@@ -48,6 +48,7 @@ void main (void)
     //initSonar();
     //initAnalogInputs(1);
     initLCD();
+    initServo();
     //initIR_range();
     //initLS1();
     //initMotors();
@@ -57,11 +58,16 @@ void main (void)
     timer1InterruptEnable();
 
     while(1){
-        if(newKey)
-            txt[x] = key;
-
-        writeLine(txt, 1);
         
+
+        sprintf(txt0, "%d              ",(key-'0')*10);
+        writeLine(txt0, 0);
+        
+        if(newKey)
+            txt1[x] = key;
+        
+        writeLine(txt1, 1);
+        setServoAngle( (key-'0')*10);
     }
 }
 
@@ -109,7 +115,7 @@ void timer1Interrupt(void)
         x -=1;
         if(x<0)
             x=15;
-        txt[x] = ' ';
+        txt1[x] = ' ';
     }
     if(!getButton1()){
         button1Released = 1;

@@ -12,7 +12,7 @@
 extern "C" {
 #endif
 
-#define SERVO_CONNECTED_TO_S5
+#define SERVO_CONNECTED_TO_S1
 
 #define SERVO_PERIOD 2000   // 100kHz timer (.1us), 20ms period
 static unsigned short servo_count;		    //

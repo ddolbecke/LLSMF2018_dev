@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=drivers/acl.c drivers/analogInputs.c drivers/ChrFont0.c drivers/ClpLib.c drivers/databk.c drivers/delay.c drivers/FillPat.c drivers/interrupts.c drivers/motors.c drivers/mx4.c drivers/OledChar.c drivers/OledGrph.c drivers/Pmod8leds.c drivers/PmodBTN.c drivers/PmodCLP.c drivers/PmodMAXSONAR.c drivers/PmodOLED.c drivers/PmodSSD.c drivers/PmodTMP3.c drivers/scope.c drivers/servo.c drivers/PmodLS1.c drivers/PmodIR_Range.c drivers/PmodJSTK.c sources/main.c sources/PmodKYPD.c
+SOURCEFILES_QUOTED_IF_SPACED=drivers/acl.c drivers/analogInputs.c drivers/ChrFont0.c drivers/ClpLib.c drivers/databk.c drivers/delay.c drivers/FillPat.c drivers/interrupts.c drivers/motors.c drivers/mx4.c drivers/OledChar.c drivers/OledGrph.c drivers/Pmod8leds.c drivers/PmodBTN.c drivers/PmodCLP.c drivers/PmodMAXSONAR.c drivers/PmodOLED.c drivers/PmodSSD.c drivers/PmodTMP3.c drivers/scope.c drivers/servo.c drivers/PmodLS1.c drivers/PmodIR_Range.c drivers/PmodJSTK.c sources/PmodKYPD.c sources/main.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/drivers/acl.o ${OBJECTDIR}/drivers/analogInputs.o ${OBJECTDIR}/drivers/ChrFont0.o ${OBJECTDIR}/drivers/ClpLib.o ${OBJECTDIR}/drivers/databk.o ${OBJECTDIR}/drivers/delay.o ${OBJECTDIR}/drivers/FillPat.o ${OBJECTDIR}/drivers/interrupts.o ${OBJECTDIR}/drivers/motors.o ${OBJECTDIR}/drivers/mx4.o ${OBJECTDIR}/drivers/OledChar.o ${OBJECTDIR}/drivers/OledGrph.o ${OBJECTDIR}/drivers/Pmod8leds.o ${OBJECTDIR}/drivers/PmodBTN.o ${OBJECTDIR}/drivers/PmodCLP.o ${OBJECTDIR}/drivers/PmodMAXSONAR.o ${OBJECTDIR}/drivers/PmodOLED.o ${OBJECTDIR}/drivers/PmodSSD.o ${OBJECTDIR}/drivers/PmodTMP3.o ${OBJECTDIR}/drivers/scope.o ${OBJECTDIR}/drivers/servo.o ${OBJECTDIR}/drivers/PmodLS1.o ${OBJECTDIR}/drivers/PmodIR_Range.o ${OBJECTDIR}/drivers/PmodJSTK.o ${OBJECTDIR}/sources/main.o ${OBJECTDIR}/sources/PmodKYPD.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/drivers/acl.o.d ${OBJECTDIR}/drivers/analogInputs.o.d ${OBJECTDIR}/drivers/ChrFont0.o.d ${OBJECTDIR}/drivers/ClpLib.o.d ${OBJECTDIR}/drivers/databk.o.d ${OBJECTDIR}/drivers/delay.o.d ${OBJECTDIR}/drivers/FillPat.o.d ${OBJECTDIR}/drivers/interrupts.o.d ${OBJECTDIR}/drivers/motors.o.d ${OBJECTDIR}/drivers/mx4.o.d ${OBJECTDIR}/drivers/OledChar.o.d ${OBJECTDIR}/drivers/OledGrph.o.d ${OBJECTDIR}/drivers/Pmod8leds.o.d ${OBJECTDIR}/drivers/PmodBTN.o.d ${OBJECTDIR}/drivers/PmodCLP.o.d ${OBJECTDIR}/drivers/PmodMAXSONAR.o.d ${OBJECTDIR}/drivers/PmodOLED.o.d ${OBJECTDIR}/drivers/PmodSSD.o.d ${OBJECTDIR}/drivers/PmodTMP3.o.d ${OBJECTDIR}/drivers/scope.o.d ${OBJECTDIR}/drivers/servo.o.d ${OBJECTDIR}/drivers/PmodLS1.o.d ${OBJECTDIR}/drivers/PmodIR_Range.o.d ${OBJECTDIR}/drivers/PmodJSTK.o.d ${OBJECTDIR}/sources/main.o.d ${OBJECTDIR}/sources/PmodKYPD.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/drivers/acl.o ${OBJECTDIR}/drivers/analogInputs.o ${OBJECTDIR}/drivers/ChrFont0.o ${OBJECTDIR}/drivers/ClpLib.o ${OBJECTDIR}/drivers/databk.o ${OBJECTDIR}/drivers/delay.o ${OBJECTDIR}/drivers/FillPat.o ${OBJECTDIR}/drivers/interrupts.o ${OBJECTDIR}/drivers/motors.o ${OBJECTDIR}/drivers/mx4.o ${OBJECTDIR}/drivers/OledChar.o ${OBJECTDIR}/drivers/OledGrph.o ${OBJECTDIR}/drivers/Pmod8leds.o ${OBJECTDIR}/drivers/PmodBTN.o ${OBJECTDIR}/drivers/PmodCLP.o ${OBJECTDIR}/drivers/PmodMAXSONAR.o ${OBJECTDIR}/drivers/PmodOLED.o ${OBJECTDIR}/drivers/PmodSSD.o ${OBJECTDIR}/drivers/PmodTMP3.o ${OBJECTDIR}/drivers/scope.o ${OBJECTDIR}/drivers/servo.o ${OBJECTDIR}/drivers/PmodLS1.o ${OBJECTDIR}/drivers/PmodIR_Range.o ${OBJECTDIR}/drivers/PmodJSTK.o ${OBJECTDIR}/sources/PmodKYPD.o ${OBJECTDIR}/sources/main.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/drivers/acl.o.d ${OBJECTDIR}/drivers/analogInputs.o.d ${OBJECTDIR}/drivers/ChrFont0.o.d ${OBJECTDIR}/drivers/ClpLib.o.d ${OBJECTDIR}/drivers/databk.o.d ${OBJECTDIR}/drivers/delay.o.d ${OBJECTDIR}/drivers/FillPat.o.d ${OBJECTDIR}/drivers/interrupts.o.d ${OBJECTDIR}/drivers/motors.o.d ${OBJECTDIR}/drivers/mx4.o.d ${OBJECTDIR}/drivers/OledChar.o.d ${OBJECTDIR}/drivers/OledGrph.o.d ${OBJECTDIR}/drivers/Pmod8leds.o.d ${OBJECTDIR}/drivers/PmodBTN.o.d ${OBJECTDIR}/drivers/PmodCLP.o.d ${OBJECTDIR}/drivers/PmodMAXSONAR.o.d ${OBJECTDIR}/drivers/PmodOLED.o.d ${OBJECTDIR}/drivers/PmodSSD.o.d ${OBJECTDIR}/drivers/PmodTMP3.o.d ${OBJECTDIR}/drivers/scope.o.d ${OBJECTDIR}/drivers/servo.o.d ${OBJECTDIR}/drivers/PmodLS1.o.d ${OBJECTDIR}/drivers/PmodIR_Range.o.d ${OBJECTDIR}/drivers/PmodJSTK.o.d ${OBJECTDIR}/sources/PmodKYPD.o.d ${OBJECTDIR}/sources/main.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/drivers/acl.o ${OBJECTDIR}/drivers/analogInputs.o ${OBJECTDIR}/drivers/ChrFont0.o ${OBJECTDIR}/drivers/ClpLib.o ${OBJECTDIR}/drivers/databk.o ${OBJECTDIR}/drivers/delay.o ${OBJECTDIR}/drivers/FillPat.o ${OBJECTDIR}/drivers/interrupts.o ${OBJECTDIR}/drivers/motors.o ${OBJECTDIR}/drivers/mx4.o ${OBJECTDIR}/drivers/OledChar.o ${OBJECTDIR}/drivers/OledGrph.o ${OBJECTDIR}/drivers/Pmod8leds.o ${OBJECTDIR}/drivers/PmodBTN.o ${OBJECTDIR}/drivers/PmodCLP.o ${OBJECTDIR}/drivers/PmodMAXSONAR.o ${OBJECTDIR}/drivers/PmodOLED.o ${OBJECTDIR}/drivers/PmodSSD.o ${OBJECTDIR}/drivers/PmodTMP3.o ${OBJECTDIR}/drivers/scope.o ${OBJECTDIR}/drivers/servo.o ${OBJECTDIR}/drivers/PmodLS1.o ${OBJECTDIR}/drivers/PmodIR_Range.o ${OBJECTDIR}/drivers/PmodJSTK.o ${OBJECTDIR}/sources/main.o ${OBJECTDIR}/sources/PmodKYPD.o
+OBJECTFILES=${OBJECTDIR}/drivers/acl.o ${OBJECTDIR}/drivers/analogInputs.o ${OBJECTDIR}/drivers/ChrFont0.o ${OBJECTDIR}/drivers/ClpLib.o ${OBJECTDIR}/drivers/databk.o ${OBJECTDIR}/drivers/delay.o ${OBJECTDIR}/drivers/FillPat.o ${OBJECTDIR}/drivers/interrupts.o ${OBJECTDIR}/drivers/motors.o ${OBJECTDIR}/drivers/mx4.o ${OBJECTDIR}/drivers/OledChar.o ${OBJECTDIR}/drivers/OledGrph.o ${OBJECTDIR}/drivers/Pmod8leds.o ${OBJECTDIR}/drivers/PmodBTN.o ${OBJECTDIR}/drivers/PmodCLP.o ${OBJECTDIR}/drivers/PmodMAXSONAR.o ${OBJECTDIR}/drivers/PmodOLED.o ${OBJECTDIR}/drivers/PmodSSD.o ${OBJECTDIR}/drivers/PmodTMP3.o ${OBJECTDIR}/drivers/scope.o ${OBJECTDIR}/drivers/servo.o ${OBJECTDIR}/drivers/PmodLS1.o ${OBJECTDIR}/drivers/PmodIR_Range.o ${OBJECTDIR}/drivers/PmodJSTK.o ${OBJECTDIR}/sources/PmodKYPD.o ${OBJECTDIR}/sources/main.o
 
 # Source Files
-SOURCEFILES=drivers/acl.c drivers/analogInputs.c drivers/ChrFont0.c drivers/ClpLib.c drivers/databk.c drivers/delay.c drivers/FillPat.c drivers/interrupts.c drivers/motors.c drivers/mx4.c drivers/OledChar.c drivers/OledGrph.c drivers/Pmod8leds.c drivers/PmodBTN.c drivers/PmodCLP.c drivers/PmodMAXSONAR.c drivers/PmodOLED.c drivers/PmodSSD.c drivers/PmodTMP3.c drivers/scope.c drivers/servo.c drivers/PmodLS1.c drivers/PmodIR_Range.c drivers/PmodJSTK.c sources/main.c sources/PmodKYPD.c
+SOURCEFILES=drivers/acl.c drivers/analogInputs.c drivers/ChrFont0.c drivers/ClpLib.c drivers/databk.c drivers/delay.c drivers/FillPat.c drivers/interrupts.c drivers/motors.c drivers/mx4.c drivers/OledChar.c drivers/OledGrph.c drivers/Pmod8leds.c drivers/PmodBTN.c drivers/PmodCLP.c drivers/PmodMAXSONAR.c drivers/PmodOLED.c drivers/PmodSSD.c drivers/PmodTMP3.c drivers/scope.c drivers/servo.c drivers/PmodLS1.c drivers/PmodIR_Range.c drivers/PmodJSTK.c sources/PmodKYPD.c sources/main.c
 
 
 CFLAGS=
@@ -250,17 +250,17 @@ ${OBJECTDIR}/drivers/PmodJSTK.o: drivers/PmodJSTK.c  nbproject/Makefile-${CND_CO
 	@${RM} ${OBJECTDIR}/drivers/PmodJSTK.o 
 	@${FIXDEPS} "${OBJECTDIR}/drivers/PmodJSTK.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"sources" -I"drivers" -I"plib/pic32mx/include" -MMD -MF "${OBJECTDIR}/drivers/PmodJSTK.o.d" -o ${OBJECTDIR}/drivers/PmodJSTK.o drivers/PmodJSTK.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
 	
-${OBJECTDIR}/sources/main.o: sources/main.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/sources" 
-	@${RM} ${OBJECTDIR}/sources/main.o.d 
-	@${RM} ${OBJECTDIR}/sources/main.o 
-	@${FIXDEPS} "${OBJECTDIR}/sources/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"sources" -I"drivers" -I"plib/pic32mx/include" -MMD -MF "${OBJECTDIR}/sources/main.o.d" -o ${OBJECTDIR}/sources/main.o sources/main.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
-	
 ${OBJECTDIR}/sources/PmodKYPD.o: sources/PmodKYPD.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/sources" 
 	@${RM} ${OBJECTDIR}/sources/PmodKYPD.o.d 
 	@${RM} ${OBJECTDIR}/sources/PmodKYPD.o 
 	@${FIXDEPS} "${OBJECTDIR}/sources/PmodKYPD.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"sources" -I"drivers" -I"plib/pic32mx/include" -MMD -MF "${OBJECTDIR}/sources/PmodKYPD.o.d" -o ${OBJECTDIR}/sources/PmodKYPD.o sources/PmodKYPD.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/sources/main.o: sources/main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/sources" 
+	@${RM} ${OBJECTDIR}/sources/main.o.d 
+	@${RM} ${OBJECTDIR}/sources/main.o 
+	@${FIXDEPS} "${OBJECTDIR}/sources/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"sources" -I"drivers" -I"plib/pic32mx/include" -MMD -MF "${OBJECTDIR}/sources/main.o.d" -o ${OBJECTDIR}/sources/main.o sources/main.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
 	
 else
 ${OBJECTDIR}/drivers/acl.o: drivers/acl.c  nbproject/Makefile-${CND_CONF}.mk
@@ -407,17 +407,17 @@ ${OBJECTDIR}/drivers/PmodJSTK.o: drivers/PmodJSTK.c  nbproject/Makefile-${CND_CO
 	@${RM} ${OBJECTDIR}/drivers/PmodJSTK.o 
 	@${FIXDEPS} "${OBJECTDIR}/drivers/PmodJSTK.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"sources" -I"drivers" -I"plib/pic32mx/include" -MMD -MF "${OBJECTDIR}/drivers/PmodJSTK.o.d" -o ${OBJECTDIR}/drivers/PmodJSTK.o drivers/PmodJSTK.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
 	
-${OBJECTDIR}/sources/main.o: sources/main.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/sources" 
-	@${RM} ${OBJECTDIR}/sources/main.o.d 
-	@${RM} ${OBJECTDIR}/sources/main.o 
-	@${FIXDEPS} "${OBJECTDIR}/sources/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"sources" -I"drivers" -I"plib/pic32mx/include" -MMD -MF "${OBJECTDIR}/sources/main.o.d" -o ${OBJECTDIR}/sources/main.o sources/main.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
-	
 ${OBJECTDIR}/sources/PmodKYPD.o: sources/PmodKYPD.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/sources" 
 	@${RM} ${OBJECTDIR}/sources/PmodKYPD.o.d 
 	@${RM} ${OBJECTDIR}/sources/PmodKYPD.o 
 	@${FIXDEPS} "${OBJECTDIR}/sources/PmodKYPD.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"sources" -I"drivers" -I"plib/pic32mx/include" -MMD -MF "${OBJECTDIR}/sources/PmodKYPD.o.d" -o ${OBJECTDIR}/sources/PmodKYPD.o sources/PmodKYPD.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/sources/main.o: sources/main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/sources" 
+	@${RM} ${OBJECTDIR}/sources/main.o.d 
+	@${RM} ${OBJECTDIR}/sources/main.o 
+	@${FIXDEPS} "${OBJECTDIR}/sources/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"sources" -I"drivers" -I"plib/pic32mx/include" -MMD -MF "${OBJECTDIR}/sources/main.o.d" -o ${OBJECTDIR}/sources/main.o sources/main.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
 	
 endif
 
