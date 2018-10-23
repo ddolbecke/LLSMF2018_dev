@@ -27,6 +27,7 @@
       <itemPath>drivers/PmodIR_Range.c</itemPath>
       <itemPath>drivers/PmodJSTK.c</itemPath>
       <itemPath>sources/PmodKYPD.c</itemPath>
+      <itemPath>drivers/PmodBuzzer.c</itemPath>
     </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -57,6 +58,7 @@
       <itemPath>drivers/PmodIR_Range.h</itemPath>
       <itemPath>drivers/PmodJSTK.h</itemPath>
       <itemPath>sources/PmodKYPD.h</itemPath>
+      <itemPath>drivers/PmodBuzzer.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
