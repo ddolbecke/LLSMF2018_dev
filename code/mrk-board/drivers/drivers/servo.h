@@ -24,7 +24,10 @@ static unsigned short servo4_angle;		    // from 0 to 180 (750us to 2550us)
 void initServo();
 
 // Sets the servo to the corresponding angle (in degrees, from 0 to 180)
-void setServoAngle(unsigned short angle);
+void setServo1Angle(unsigned short angle);
+void setServo2Angle(unsigned short angle);
+void setServo3Angle(unsigned short angle);
+void setServo4Angle(unsigned short angle);
 
 #ifdef	__cplusplus
 }

@@ -51,7 +51,7 @@ void initAcc2() {
 
     
     //DelayMs(200);
-    RestartI2C2();//Send the Stop condition
+    RestartI2C1();//Send the Stop condition
     StartI2C1();
     IdleI2C1();//Wait to complete
     MasterWriteI2C1( (SLAVE_ADDRESS << 1) | 0 ); //transmit write command
@@ -74,7 +74,7 @@ unsigned short getA2x() {
     unsigned short data0 = 0;
     unsigned short data1 = 0;
     
-    RestartI2C2();//Send the Stop condition
+    RestartI2C1();//Send the Stop condition
     StartI2C1();
     IdleI2C1();//Wait to complete
     MasterWriteI2C1( (SLAVE_ADDRESS << 1) | 0 ); //transmit write command
@@ -108,7 +108,7 @@ unsigned short getA2y() {
     unsigned short data0 = 0;
     unsigned short data1 = 0;
 
-    RestartI2C2();//Send the Stop condition
+    RestartI2C1();//Send the Stop condition
     StartI2C1();
     IdleI2C1();//Wait to complete
     MasterWriteI2C1( (SLAVE_ADDRESS << 1) | 0 ); //transmit write command

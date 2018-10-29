@@ -56,7 +56,6 @@ void setServo4Enable(unsigned char enable) {
 
 
 void servo10usRoutine(void){
-    unsigned short servo1_angle_norm;
     
     servo_count++;
     if (servo1_angle > 180)
@@ -68,10 +67,10 @@ void servo10usRoutine(void){
     if (servo4_angle > 180)
         servo4_angle = 180;
     
-    setServo1Enable(servo_count < (servo1_angle + 75)); // min.750us;max.2550us (10us per degree)
-    setServo2Enable(servo_count < (servo2_angle + 75)); // min.750us;max.2550us (10us per degree)
-    setServo3Enable(servo_count < (servo3_angle + 75)); // min.750us;max.2550us (10us per degree)
-    setServo4Enable(servo_count < (servo4_angle + 75)); // min.750us;max.2550us (10us per degree)
+    setServo1Enable(servo_count < (servo1_angle + 75)/5); // min.750us;max.2550us (10us per degree)
+    setServo2Enable(servo_count < (servo2_angle + 75)/5); // min.750us;max.2550us (10us per degree)
+    setServo3Enable(servo_count < (servo3_angle + 75)/5); // min.750us;max.2550us (10us per degree)
+    setServo4Enable(servo_count < (servo4_angle + 75)/5); // min.750us;max.2550us (10us per degree)
     
     if (servo_count == SERVO_PERIOD) {
         servo_count = 0;

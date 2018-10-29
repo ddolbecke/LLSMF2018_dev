@@ -20,20 +20,18 @@
 #include "interrupts.h"
 #include "PmodIR_Range.h"
 #include "PmodKYPD.h"
+#include "acl.h"
 
 /* ------------------------------------------------------------ */
 /*				global variables								*/
 /* ------------------------------------------------------------ */
-/*char cs=0, s=0, min=0, btn1released=1, start;
-unsigned short d1,d2,d3,d4;
-char button1Released = 1, keyReleased=1, newKey=0;
-char distType = 0;
-char col, row, rows,x=0, key;
+
+long angle1, angle2, angle3, angle4, motorSelect=1;
+unsigned short ax,ay,az;
+char button1=0, button2=0, button1_old=0, button2_old=0;
+char button1Change=0, button2Change=0;
 char txt[17];
-// key (row, col)
-char keys[4][4] = { { '0', 'F', 'E', 'D' }, { '7', '8', '9', 'C' } , { '4', '5', '6', 'B' }, { '1', '2', '3', 'A' } }; 
- */
-int buzz = 0;
+
 /* ------------------------------------------------------------ */
 /*				   functions    								*/
 /* ------------------------------------------------------------ */
@@ -51,21 +49,20 @@ void main (void)
     //setLeds(0xa);
     //initDelay();
     //initSonar();
-    //initAnalogInputs(1);
-   // initLCD();
+    initAnalogInputs(1);
+    initLCD();
     //initIR_range();
     //initLS1();
     //initMotors();
-    
-    initTimer1(62500, T1_PS_1_64); // 1 interrupts per second
+    initTimer1(6250, T1_PS_1_64); // 10 interrupts per second
 
     timer1InterruptEnable();
     while(1){
-       /* if(newKey)
-            txt[x] = key;
-        * 
-        writeLine(txt, 1);
-        */
+        //sprintf(txt, "%3d %3d %3d %3d ",angle1, angle2, angle3, angle4);
+        sprintf(txt, "%4d  %4d  %4d",ax, ay, az);
+        writeLine(txt,0);
+        sprintf(txt, "%3d             ",motorSelect);
+        writeLine(txt,1);
         
     }
 }
@@ -79,54 +76,52 @@ void main (void)
 void timer1Interrupt(void)
 {
     
-    buzz++;
-    if (buzz>180)
-        buzz=0;
+    button1 = getButton1(); // get new button state
+    button2 = getButton2();
+    button1Change = button1 - button1_old;
+    button2Change = button2 - button2_old;
+    button1_old = button1;  // store current button state for next interrupt
+    button2_old = button2;
     
-   /* rows = keypad_readRows();
-    setLeds(rows);
     
-    if(rows != 0xf){
-        for(row=0; row<4;row++){
-            if( ((rows>>row) & 0b0001) == 0 ){
-                key = keys[row][col];
-                 
-                newKey = 1;
-                keyReleased = 0;
-            }     
-        }  
-    }
+    
+    // on push (button1)
+    // =================
+    // we select servo motor with button 1 
+    if(button1Change == 1){ 
+        motorSelect+=1;
+        if (motorSelect>4)
+            motorSelect=1;
         
- 
     
-    col+=1;
-    if(col>3){
-        col = 0;
-        if( (keyReleased==1) && (newKey) ){
-            x+=1;
-            newKey = 0;
-            if(x>15)
-                x = 0;
-        }
-        keyReleased = 1;
-       
     }
-       
-    keypad_setCols((1<<col)^0xF);
+    // on release (button2)
+    // ====================
+    // we assign new servo angle on button 2 release
+    if(button2Change == -1){
+        setServo1Angle(angle1);
+        setServo2Angle(angle2);
+        setServo3Angle(angle3);
+        setServo4Angle(angle4);
+    
+    }
+    
+    // on every timer1 interrupt
+    // =========================    
+    switch(motorSelect){
+        case 1: 
+            angle1 = readADC(0)*180/1023;
+            break;
+        case 2: 
+            angle2 = readADC(0)*180/1023;
+            break;
+        case 3: 
+            angle3 = readADC(0)*180/1023;
+            break;
+        case 4: 
+            angle4 = readADC(0)*180/1023;
+            break;
+    }    
 
-    
-    
-    if(button1Released && getButton1()){
-        button1Released = 0;   
-        x -=1;
-        if(x<0)
-            x=15;
-        txt[x] = ' ';
-    }
-    if(!getButton1()){
-        button1Released = 1;
-    }
-    
-    */
-    
+
 }

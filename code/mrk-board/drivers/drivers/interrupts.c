@@ -115,7 +115,7 @@ void enable10usInterrupts(void){
     INTEnableInterrupts();
     // timer4 init
     ConfigIntTimer4(T4_INT_OFF | T4_INT_PRIOR_7 | T4_INT_SUB_PRIOR_0);
-    OpenTimer4(T4_ON|T4_PS_1_1|T4_SOURCE_INT,100);  //config, period (16 bits))
+    OpenTimer4(T4_ON|T4_PS_1_1|T4_SOURCE_INT,100*5);  //config, period (16 bits))
     INTEnable(INT_T4,1);  // source, enable/disable
 }
 
