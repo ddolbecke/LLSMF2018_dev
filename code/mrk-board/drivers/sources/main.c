@@ -47,6 +47,7 @@ void main (void)
 
     initIO();
     initBuzzer();
+    initServo();
     //setLeds(0xa);
     //initDelay();
     //initSonar();
@@ -56,13 +57,13 @@ void main (void)
     //initLS1();
     //initMotors();
     
-    initTimer1(625, T1_PS_1_8); // 100 interrupts per second
+    initTimer1(62500, T1_PS_1_64); // 1 interrupts per second
 
     timer1InterruptEnable();
     while(1){
        /* if(newKey)
             txt[x] = key;
-
+        * 
         writeLine(txt, 1);
         */
         
@@ -77,16 +78,11 @@ void main (void)
 
 void timer1Interrupt(void)
 {
-    if(getButton1()){
-        if(buzz == 0){
-            buzz = 1;
-            setBuzzer3(0b1);
-        }
-        else{
-            buzz = 0;
-            setBuzzer3(0b00);
-        }
-    }
+    
+    buzz++;
+    if (buzz>180)
+        buzz=0;
+    
    /* rows = keypad_readRows();
     setLeds(rows);
     

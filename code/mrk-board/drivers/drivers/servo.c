@@ -7,81 +7,74 @@
 #include <plib.h>
 #include "interrupts.h"
 
-void setServoAngle(unsigned short angle) {
-    servo_angle = angle;
+void setServo1Angle(unsigned short angle) {
+    servo1_angle = angle;
 }
-intCount = 0;
+
+void setServo2Angle(unsigned short angle) {
+    servo2_angle = angle;
+}
+
+void setServo3Angle(unsigned short angle) {
+    servo3_angle = angle;
+}
+
+void setServo4Angle(unsigned short angle) {
+    servo4_angle = angle;
+}
+
 void initServo() {
     enable10usInterrupts();
-    
-#ifdef SERVO_CONNECTED_TO_S1
+
     TRISGbits.TRISG12 = 0;	// S1-JC1-RG12 (selected by default)
-#endif
-#ifdef SERVO_CONNECTED_TO_S2
     TRISGbits.TRISG13 = 0;	// S2-JC2-RG13
-#endif
-#ifdef SERVO_CONNECTED_TO_S3
     TRISGbits.TRISG14 = 0;	// S3-JC3-RG14
-#endif
-#ifdef SERVO_CONNECTED_TO_S4
     TRISGbits.TRISG15 = 0;	// S4-JC4-RG15
-#endif
-#ifdef SERVO_CONNECTED_TO_S5
-    TRISGbits.TRISG0 = 0;	// S5-JC7-RG00
-#endif
-#ifdef SERVO_CONNECTED_TO_S6
-    TRISGbits.TRISG1 = 0;	// S6-JC8-RG01
-#endif
-#ifdef SERVO_CONNECTED_TO_S7
-    TRISFbits.TRISF0 = 0;	// S7-JC9-RF00
-#endif
-#ifdef SERVO_CONNECTED_TO_S8
-    TRISFbits.TRISF1 = 0;	// S8-JC10-RF1
-#endif
 
     servo_count = 0;		    //
-    servo_angle = 0;		    // from 0 to 180 (750us to 2550us)
+    servo1_angle = 0;		    // from 0 to 180 (750us to 2550us)
+    servo2_angle = 0;		    // from 0 to 180 (750us to 2550us)
+    servo3_angle = 0;		    // from 0 to 180 (750us to 2550us)
+    servo4_angle = 0;		    // from 0 to 180 (750us to 2550us)
 }
 
-void setServoEnable(unsigned char enable) {
-#ifdef SERVO_CONNECTED_TO_S1
+void setServo1Enable(unsigned char enable) {
     LATGbits.LATG12 = enable;	// S1-JC1-RG12 (selected by default)
-   #endif
-#ifdef SERVO_CONNECTED_TO_S2
+}
+
+void setServo2Enable(unsigned char enable) {
     LATGbits.LATG13 = enable;	// S2-JC2-RG13
-    #endif
-#ifdef SERVO_CONNECTED_TO_S3
-    LATGbits.LATG14 = enable;	// S3-JC3-RG14
-    #endif
-#ifdef SERVO_CONNECTED_TO_S4
+}
+
+void setServo3Enable(unsigned char enable) {
+    LATGbits.LATG14 = enable;	// S3-JC3-RG1
+}
+
+void setServo4Enable(unsigned char enable) {
     LATGbits.LATG15 = enable;	// S4-JC4-RG15
-    #endif
-#ifdef SERVO_CONNECTED_TO_S5
-    LATGbits.LATG0 = enable;	// S5-JC7-RG00
-    #endif
-#ifdef SERVO_CONNECTED_TO_S6
-    LATGbits.LATG1 = enable;	// S6-JC8-RG01
-    #endif
-#ifdef SERVO_CONNECTED_TO_S7
-    LATFbits.LATF0 = enable;	// S7-JC9-RF00
-    #endif
-#ifdef SERVO_CONNECTED_TO_S8
-    LATFbits.LATF1 = enable;	// S8-JC10-RF1
-#endif
 }
 
 
 void servo10usRoutine(void){
-    unsigned short servo_angle_norm;  
-    servo_count++;
-    if (servo_angle > 180)
-        servo_angle_norm = 180;
-    else
-        servo_angle_norm = servo_angle;
+    unsigned short servo1_angle_norm;
     
-    setServoEnable(servo_count < (servo_angle_norm + 75)); // min.750us;max.2550us (10us per degree)
+    servo_count++;
+    if (servo1_angle > 180)
+        servo1_angle = 180;
+    if (servo2_angle > 180)
+        servo2_angle = 180;
+    if (servo3_angle > 180)
+        servo3_angle = 180;
+    if (servo4_angle > 180)
+        servo4_angle = 180;
+    
+    setServo1Enable(servo_count < (servo1_angle + 75)); // min.750us;max.2550us (10us per degree)
+    setServo2Enable(servo_count < (servo2_angle + 75)); // min.750us;max.2550us (10us per degree)
+    setServo3Enable(servo_count < (servo3_angle + 75)); // min.750us;max.2550us (10us per degree)
+    setServo4Enable(servo_count < (servo4_angle + 75)); // min.750us;max.2550us (10us per degree)
+    
     if (servo_count == SERVO_PERIOD) {
-	servo_count = 0;
+        servo_count = 0;
     } 
 }
 

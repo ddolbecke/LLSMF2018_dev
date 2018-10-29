@@ -12,11 +12,13 @@
 extern "C" {
 #endif
 
-#define SERVO_CONNECTED_TO_S1
 
 #define SERVO_PERIOD 2000   // 100kHz timer (.1us), 20ms period
 static unsigned short servo_count;		    //
-static unsigned short servo_angle;		    // from 0 to 180 (750us to 2550us)
+static unsigned short servo1_angle;		    // from 0 to 180 (750us to 2550us)
+static unsigned short servo2_angle;		    // from 0 to 180 (750us to 2550us)
+static unsigned short servo3_angle;		    // from 0 to 180 (750us to 2550us)
+static unsigned short servo4_angle;		    // from 0 to 180 (750us to 2550us)
 
 // Initializes the servomotor
 void initServo();
