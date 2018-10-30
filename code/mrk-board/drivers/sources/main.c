@@ -21,7 +21,7 @@
 #include "PmodIR_Range.h"
 #include "PmodKYPD.h"
 #include "acl.h"
-
+#include "PmodBuzzer.h"
 /* ------------------------------------------------------------ */
 /*				global variables								*/
 /* ------------------------------------------------------------ */
@@ -58,8 +58,7 @@ void main (void)
 
     timer1InterruptEnable();
     while(1){
-        //sprintf(txt, "%3d %3d %3d %3d ",angle1, angle2, angle3, angle4);
-        sprintf(txt, "%4d  %4d  %4d",ax, ay, az);
+        sprintf(txt, "%3d %3d %3d %3d ",angle1, angle2, angle3, angle4);
         writeLine(txt,0);
         sprintf(txt, "%3d             ",motorSelect);
         writeLine(txt,1);

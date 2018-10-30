@@ -48,5 +48,6 @@ drivers/delay.h  \
 drivers/PmodCLP.h  \
  drivers/analogInputs.h  \
 drivers/PmodIR_Range.h  \
-sources/PmodKYPD.h  \
- drivers/acl.h 
+drivers/PmodKYPD.h  \
+ drivers/acl.h  \
+drivers/PmodBuzzer.h 
