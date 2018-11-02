@@ -1,16 +1,16 @@
 
 
 /* 
- * File:   scope.h
- * Author: Dimitri
+ * File:   uart.h
+ * Authors: Jean & Thomas
  * Comments:
  * Revision history: 
  */
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef SCOPE_H
-#define	SCOPE_H
+#ifndef UART_H
+#define	UART_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 #define _SUPPRESS_PLIB_WARNING 1
@@ -19,11 +19,11 @@
 #include "plib.h"
 
 
-void initScope(void);
-void scopeRoutine();
-void sendVariables(long* data);
+void initUart(void);
+//void scopeRoutine();
+void sendVariables(char* data);
 
-long scopeVariables[6];
+//long scopeVariables[6];
 
 #endif	/* SCOPE_H */
 

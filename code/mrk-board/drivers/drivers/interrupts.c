@@ -17,7 +17,7 @@
 #define _SUPPRESS_PLIB_WARNING 1
 #include <plib.h>
 #include "servo.h"
-#include "scope.h"
+#include "uart.h"
 #include "delay.h"
 #include "motors.h"
 

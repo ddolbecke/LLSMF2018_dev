@@ -1,8 +1,8 @@
-build/default/production/drivers/scope.o:  \
-drivers/scope.c  \
-drivers/scope.h  \
- plib/pic32mx/include/plib.h  \
-plib/pic32mx/include/peripheral/adc10.h  \
+build/default/production/drivers/PmodMIC3.o:  \
+drivers/PmodMIC3.c  \
+ drivers/PmodMIC3.h  \
+plib/pic32mx/include/plib.h  \
+ plib/pic32mx/include/peripheral/adc10.h  \
  plib/pic32mx/include/peripheral/int.h  \
  plib/pic32mx/include/peripheral/int_3xx_4xx.h  \
  plib/pic32mx/include/peripheral/legacy/int_3xx_4xx_legacy.h  \

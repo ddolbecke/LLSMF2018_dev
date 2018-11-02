@@ -1,5 +1,6 @@
-build/default/production/drivers/interrupts.o:  \
-drivers/interrupts.c  \
+build/default/production/drivers/uart.o:  \
+drivers/uart.c  \
+drivers/uart.h  \
  plib/pic32mx/include/plib.h  \
 plib/pic32mx/include/peripheral/adc10.h  \
  plib/pic32mx/include/peripheral/int.h  \
@@ -38,8 +39,4 @@ plib/pic32mx/include/peripheral/adc10.h  \
  plib/pic32mx/include/peripheral/legacy/uart_legacy.h  \
  plib/pic32mx/include/peripheral/wdt.h  \
  plib/pic32mx/include/peripheral/eth.h  \
- plib/pic32mx/include/peripheral/CAN.h  \
-drivers/servo.h  \
-drivers/uart.h  \
- drivers/delay.h  \
-drivers/motors.h 
+ plib/pic32mx/include/peripheral/CAN.h 

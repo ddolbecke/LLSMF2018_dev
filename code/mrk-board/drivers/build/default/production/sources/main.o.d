@@ -49,5 +49,4 @@ drivers/PmodCLP.h  \
  drivers/analogInputs.h  \
 drivers/PmodIR_Range.h  \
 drivers/PmodKYPD.h  \
- drivers/acl.h  \
-drivers/PmodBuzzer.h 
+ drivers/uart.h 
